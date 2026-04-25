@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import { HchyHeader } from './components/HchyHeader'
 import { HchyFooter } from './components/HchyFooter'
+import { ChatWidget } from './components/ChatWidget'
 import './globals.css'
 
 const poppins = Poppins({
@@ -43,6 +44,7 @@ export default function RootLayout({
         <HchyHeader />
         {children}
         <HchyFooter />
+        <ChatWidget />
       </body>
     </html>
   )
