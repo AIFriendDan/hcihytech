@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, Variants } from 'framer-motion'
-import { Wrench, Shield, Wifi, Monitor, HardDrive, Headphones } from 'lucide-react'
+import { Shield, Wifi, Monitor, HardDrive, Headphones } from 'lucide-react'
 
 const container: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -18,7 +18,6 @@ const item: Variants = {
 }
 
 const services = [
-  { icon: Wrench, title: 'Computer Repair', desc: 'Hardware and software troubleshooting for PCs and Macs.' },
   { icon: Wifi, title: 'Networking', desc: 'Wi-Fi setup, network security, and connectivity solutions.' },
   { icon: Shield, title: 'Security', desc: 'Antivirus, firewall configuration, and data protection.' },
   { icon: Monitor, title: 'Setup & Migration', desc: 'New computer setup, data transfer, and cloud migration.' },
