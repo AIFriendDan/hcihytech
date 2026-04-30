@@ -1,5 +1,6 @@
 import HchyHero from './components/HchyHero'
 import HchyAbout from './components/HchyAbout'
+import OurPhilosophy from './components/OurPhilosophy'
 import WebDesignPackages from './components/WebDesignPackages'
 import AiServices from './components/AiServices'
 import ItServices from './components/ItServices'
@@ -11,6 +12,7 @@ export default function HchyLandingPage() {
     <div className="flex min-h-screen flex-col bg-black text-white">
       <HchyHero />
       <HchyAbout />
+      <OurPhilosophy />
       <WebDesignPackages />
       <AiServices />
       <ItServices />
