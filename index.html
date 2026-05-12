@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HCHY IT Services — Salon Intake Forms</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0d0d0d;
+    --off-white: #f7f3ee;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --rose: #d4726a;
+    --charcoal: #2a2a2a;
+    --mid: #5a5a5a;
+    --line: rgba(201,168,76,0.25);
+    --card-bg: #ffffff;
+    --radius: 12px;
+    --shadow: 0 4px 32px rgba(0,0,0,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: var(--off-white);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--charcoal);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 10% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 90% 100%, rgba(212,114,106,0.06) 0%, transparent 60%);
+  }
+  header {
+    background: var(--black);
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--gold);
+  }
+  .brand-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.04em; }
+  .brand-sub { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 3px; }
+  .badge { background: var(--gold); color: var(--black); font-family: 'DM Mono', monospace; font-size: 0.58rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; }
+  .tabs-wrapper { background: var(--black); padding: 0 40px; display: flex; gap: 0; overflow-x: auto; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .tab-btn { background: none; border: none; color: rgba(255,255,255,0.4); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; padding: 15px 22px; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 7px; }
+  .tab-btn:hover { color: var(--gold-light); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+  main { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+  .form-panel { display: none; animation: fadeUp 0.3s ease both; }
+  .form-panel.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .form-card { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid rgba(201,168,76,0.15); overflow: hidden; }
+  .card-header { background: var(--black); padding: 26px 36px; border-bottom: 2px solid var(--gold); }
+  .card-header h2 { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--off-white); margin-bottom: 5px; }
+  .card-header p { font-size: 0.75rem; color: rgba(255,255,255,0.4); font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+  .card-body { padding: 36px; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin: 30px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .section-label:first-child { margin-top: 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .full { grid-column: 1 / -1; }
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field label { font-size: 0.7rem; font-weight: 600; color: var(--mid); letter-spacing: 0.04em; text-transform: uppercase; }
+  .field label .req { color: var(--rose); margin-left: 2px; }
+  .field input, .field select, .field textarea { font-family: 'DM Sans', sans-serif; font-size: 0.87rem; color: var(--charcoal); background: var(--off-white); border: 1.5px solid #e2ddd8; border-radius: 8px; padding: 10px 13px; transition: border-color 0.2s, box-shadow 0.2s; outline: none; width: 100%; }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.12); }
+  .field textarea { resize: vertical; min-height: 75px; }
+  .choice-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+  .choice-item { display: flex; align-items: center; gap: 7px; background: var(--off-white); border: 1.5px solid #e2ddd8; border-radius: 8px; padding: 8px 13px; cursor: pointer; font-size: 0.82rem; transition: all 0.18s; user-select: none; }
+  .choice-item:has(input:checked) { border-color: var(--gold); background: rgba(201,168,76,0.07); font-weight: 600; }
+  .choice-item input { accent-color: var(--gold); width: 14px; height: 14px; }
+  .device-row { background: var(--off-white); border: 1px solid #e2ddd8; border-radius: 10px; padding: 18px; margin-bottom: 12px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .device-row-header { grid-column: 1 / -1; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+  .remove-row { background: none; border: none; color: var(--rose); cursor: pointer; font-size: 0.75rem; font-family: 'DM Mono', monospace; letter-spacing: 0.06em; }
+  .add-device-btn { background: none; border: 1.5px dashed var(--gold); border-radius: 8px; color: var(--gold); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; padding: 11px; width: 100%; cursor: pointer; transition: background 0.2s; margin-top: 4px; }
+  .add-device-btn:hover { background: rgba(201,168,76,0.07); }
+  .auth-box { background: rgba(201,168,76,0.05); border: 1.5px solid var(--line); border-radius: 10px; padding: 20px 24px; margin-top: 8px; }
+  .auth-box p { font-size: 0.78rem; color: var(--mid); line-height: 1.6; margin-bottom: 14px; }
+  .auth-check { display: flex; align-items: flex-start; gap: 10px; font-size: 0.83rem; line-height: 1.5; cursor: pointer; }
+  .auth-check input { accent-color: var(--gold); margin-top: 2px; width: 16px; height: 16px; flex-shrink: 0; }
+  .submit-row { display: flex; align-items: center; justify-content: space-between; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); flex-wrap: wrap; gap: 12px; }
+  .submit-note { font-size: 0.72rem; color: var(--mid); font-family: 'DM Mono', monospace; }
+  .submit-btn { background: var(--gold); color: var(--black); border: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600; padding: 13px 32px; cursor: pointer; letter-spacing: 0.02em; transition: background 0.2s, transform 0.15s; }
+  .submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .success-msg { display: none; background: rgba(201,168,76,0.1); border: 1.5px solid var(--gold); border-radius: 10px; padding: 18px 24px; margin-top: 20px; font-size: 0.88rem; color: var(--charcoal); text-align: center; }
+  @media (max-width: 600px) {
+    header { padding: 18px 20px; }
+    .tabs-wrapper { padding: 0 16px; }
+    main { padding: 28px 16px 60px; }
+    .card-body { padding: 22px 18px; }
+    .grid-2, .grid-3, .device-row { grid-template-columns: 1fr; }
+    .full { grid-column: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="brand-name">HCHY IT Services</div>
+    <div class="brand-sub">Client Intake System · Hair Salon</div>
+  </div>
+  <div class="badge">Confidential</div>
+</header>
+
+<div class="tabs-wrapper">
+  <button class="tab-btn active" onclick="showTab('onboarding',this)">🏢 Client Onboarding</button>
+  <button class="tab-btn" onclick="showTab('devices',this)">💻 Device Inventory</button>
+  <button class="tab-btn" onclick="showTab('passwords',this)">🔐 Password Reset Log</button>
+  <button class="tab-btn" onclick="showTab('network',this)">🌐 Network / Router Info</button>
+</div>
+
+<main>
+
+  <!-- FORM 1: NEW CLIENT ONBOARDING -->
+  <div id="tab-onboarding" class="form-panel active">
+    <div class="form-card">
+      <div class="card-header">
+        <h2>New Client Onboarding</h2>
+        <p>Capture business details, primary contacts, and existing tech stack on day one</p>
+      </div>
+      <div class="card-body">
+        <form id="form-onboarding" action="https://formspree.io/f/mgoddbvy" method="POST">
+          <input type="hidden" name="_subject" value="HCHY IT — New Client Onboarding"/>
+          <input type="hidden" name="form_type" value="Client Onboarding"/>
+
+          <div class="section-label">Business Information</div>
+          <div class="grid-2">
+            <div class="field"><label>Business Name <span class="req">*</span></label><input type="text" name="business_name" required placeholder="e.g. Shear Perfection Salon"/></div>
+            <div class="field"><label>DBA / Trade Name</label><input type="text" name="dba_name" placeholder="If different from above"/></div>
+            <div class="field"><label>Business Phone <span class="req">*</span></label><input type="tel" name="business_phone" required placeholder="(805) 555-0100"/></div>
+            <div class="field"><label>Business Email</label><input type="email" name="business_email" placeholder="salon@example.com"/></div>
+            <div class="field full"><label>Business Address <span class="req">*</span></label><input type="text" name="business_address" required placeholder="Street, City, State, ZIP"/></div>
+          </div>
+
+          <div class="section-label">Primary Contact</div>
+          <div class="grid-2">
+            <div class="field"><label>Owner / Contact Name <span class="req">*</span></label><input type="text" name="contact_name" required placeholder="Full name"/></div>
+            <div class="field"><label>Title / Role</label><input type="text" name="contact_role" placeholder="e.g. Owner, Manager"/></div>
+            <div class="field"><label>Mobile / Direct Line</label><input type="tel" name="contact_mobile" placeholder="(805) 555-0101"/></div>
+            <div class="field"><label>Preferred Contact Method</label>
+              <select name="contact_pref"><option value="">— Select —</option><option>Phone Call</option><option>Text / SMS</option><option>Email</option></select>
+            </div>
+          </div>
+
+          <div class="section-label">Current Tech Stack</div>
+          <div class="grid-2">
+            <div class="field"><label>Point of Sale (POS) System</label><input type="text" name="pos_system" placeholder="e.g. Square, Clover, Salon Iris"/></div>
+            <div class="field"><label>Booking / Scheduling Software</label><input type="text" name="booking_software" placeholder="e.g. Vagaro, Booksy, StyleSeat"/></div>
+            <div class="field"><label>Internet Service Provider (ISP)</label><input type="text" name="isp_name" placeholder="e.g. Spectrum, AT&T"/></div>
+            <div class="field"><label>Approx. Monthly IT Budget</label>
+              <select name="it_budget"><option value="">— Select —</option><option>Under $100</option><option>$100–$250</option><option>$250–$500</option><option>$500+</option><option>No budget set yet</option></select>
+            </div>
+          </div>
+
+          <div class="section-label">Pain Points &amp; Priorities</div>
+          <div class="field"><label>What brought you to HCHY IT Services today?</label><textarea name="pain_points" placeholder="Describe any issues, what's broken, what you want improved..."></textarea></div>
+          <div class="field" style="margin-top:14px;"><label>Immediate Priorities (check all that apply)</label>
+            <div class="choice-group">
+              <label class="choice-item"><input type="checkbox" name="priority" value="Password Reset"/> Password Reset</label>
+              <label class="choice-item"><input type="checkbox" name="priority" value="WiFi Setup"/> WiFi Setup</label>
+              <label class="choice-item"><input type="checkbox" name="priority" value="POS Support"/> POS Support</label>
+              <label class="choice-item"><input type="checkbox" name="priority" value="New Equipment"/> New Equipment</label>
+              <label class="choice-item"><input type="checkbox" name="priority" value="Security Audit"/> Security Audit</label>
+              <label class="choice-item"><input type="checkbox" name="priority" value="General Maintenance"/> General Maintenance</label>
+            </div>
+          </div>
+
+          <div class="section-label">Authorization</div>
+          <div class="auth-box">
+            <p>By submitting this form, you authorize HCHY IT Services to document, assess, and make recommended changes to your IT environment. All information is kept confidential.</p>
+            <label class="auth-check"><input type="checkbox" name="authorization" value="Authorized" required/> I, the business owner or authorized representative, agree to the above and authorize HCHY IT Services to proceed.</label>
+          </div>
+
+          <div class="section-label">Technician Notes</div>
+          <div class="field"><label>Internal Notes (HCHY use only)</label><textarea name="tech_notes" placeholder="Observations, follow-up items, red flags..."></textarea></div>
+
+          <div class="submit-row">
+            <span class="submit-note">→ dan.garza@aifrienddan.com via Formspree</span>
+            <button type="submit" class="submit-btn">Submit Onboarding Form →</button>
+          </div>
+        </form>
+        <div class="success-msg" id="success-onboarding">✅ Onboarding form submitted! Check your inbox at dan.garza@aifrienddan.com.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM 2: DEVICE INVENTORY -->
+  <div id="tab-devices" class="form-panel">
+    <div class="form-card">
+      <div class="card-header">
+        <h2>Device &amp; Equipment Inventory</h2>
+        <p>Document every piece of hardware on-site — serial numbers save headaches later</p>
+      </div>
+      <div class="card-body">
+        <form id="form-devices" action="https://formspree.io/f/mgoddbvy" method="POST">
+          <input type="hidden" name="_subject" value="HCHY IT — Device Inventory Submission"/>
+          <input type="hidden" name="form_type" value="Device Inventory"/>
+
+          <div class="section-label">Site Info</div>
+          <div class="grid-2">
+            <div class="field"><label>Business Name <span class="req">*</span></label><input type="text" name="business_name" required placeholder="Salon name"/></div>
+            <div class="field"><label>Date of Inventory <span class="req">*</span></label><input type="date" name="inventory_date" required/></div>
+            <div class="field"><label>Technician Name</label><input type="text" name="tech_name" placeholder="Your name"/></div>
+            <div class="field"><label>Location / Area</label><input type="text" name="location" placeholder="e.g. Front desk, Back office"/></div>
+          </div>
+
+          <div class="section-label">Devices</div>
+          <div id="device-list">
+            <div class="device-row">
+              <div class="device-row-header"><span>Device #1</span></div>
+              <div class="field"><label>Device Type</label>
+                <select name="device_type_1"><option value="">— Select —</option><option>Desktop Computer</option><option>Laptop</option><option>Tablet / iPad</option><option>POS Terminal</option><option>Printer</option><option>Router / Modem</option><option>Smart TV / Display</option><option>Phone / Landline</option><option>Other</option></select>
+              </div>
+              <div class="field"><label>Make / Brand</label><input type="text" name="device_make_1" placeholder="e.g. Dell, Apple, HP"/></div>
+              <div class="field"><label>Model</label><input type="text" name="device_model_1" placeholder="e.g. Inspiron 15"/></div>
+              <div class="field"><label>Serial Number</label><input type="text" name="device_serial_1" placeholder="On label or in settings"/></div>
+              <div class="field"><label>Asset / Tag #</label><input type="text" name="device_asset_1" placeholder="If applicable"/></div>
+              <div class="field"><label>Condition</label>
+                <select name="device_condition_1"><option value="">— Select —</option><option>Good</option><option>Fair</option><option>Needs Attention</option><option>Replace Soon</option></select>
+              </div>
+              <div class="field full"><label>Notes</label><input type="text" name="device_notes_1" placeholder="Location, issues, observations..."/></div>
+            </div>
+          </div>
+          <button type="button" class="add-device-btn" onclick="addDevice()">+ Add Another Device</button>
+
+          <div class="section-label">Technician Sign-off</div>
+          <div class="field"><label>Additional Notes</label><textarea name="inventory_notes" placeholder="Anything else to flag about the hardware environment..."></textarea></div>
+
+          <div class="submit-row">
+            <span class="submit-note">→ dan.garza@aifrienddan.com via Formspree</span>
+            <button type="submit" class="submit-btn">Submit Inventory →</button>
+          </div>
+        </form>
+        <div class="success-msg" id="success-devices">✅ Device inventory submitted! Check your inbox at dan.garza@aifrienddan.com.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM 3: PASSWORD RESET LOG -->
+  <div id="tab-passwords" class="form-panel">
+    <div class="form-card">
+      <div class="card-header">
+        <h2>Password &amp; Credentials Reset Log</h2>
+        <p>Document every change — protects you and the client legally</p>
+      </div>
+      <div class="card-body">
+        <form id="form-passwords" action="https://formspree.io/f/mgoddbvy" method="POST">
+          <input type="hidden" name="_subject" value="HCHY IT — Password Reset Log"/>
+          <input type="hidden" name="form_type" value="Password Reset Log"/>
+
+          <div class="section-label">Session Info</div>
+          <div class="grid-2">
+            <div class="field"><label>Business Name <span class="req">*</span></label><input type="text" name="business_name" required placeholder="Salon name"/></div>
+            <div class="field"><label>Date &amp; Time <span class="req">*</span></label><input type="datetime-local" name="reset_datetime" required/></div>
+            <div class="field"><label>Technician Name <span class="req">*</span></label><input type="text" name="tech_name" required placeholder="Your name"/></div>
+            <div class="field"><label>Authorized By <span class="req">*</span></label><input type="text" name="authorized_by" required placeholder="Owner / manager who approved this change"/></div>
+          </div>
+
+          <div class="section-label">What Was Changed</div>
+          <div class="grid-2">
+            <div class="field"><label>Device / System Affected <span class="req">*</span></label><input type="text" name="device_affected" required placeholder="e.g. Front desk laptop, WiFi router"/></div>
+            <div class="field"><label>Credential Type <span class="req">*</span></label>
+              <select name="credential_type" required><option value="">— Select —</option><option>Windows Admin Password</option><option>macOS Admin Password</option><option>WiFi / Router Admin Password</option><option>WiFi Network Password (SSID)</option><option>POS System Password</option><option>Booking Software Password</option><option>Email Account Password</option><option>Google Account</option><option>Apple ID</option><option>Other</option></select>
+            </div>
+            <div class="field"><label>Username / Account</label><input type="text" name="account_username" placeholder="Username or email used"/></div>
+            <div class="field"><label>Reset Method</label>
+              <select name="reset_method"><option value="">— Select —</option><option>Manual (set by technician)</option><option>System Recovery / Safe Mode</option><option>Vendor Support</option><option>Account Recovery (email/SMS)</option><option>Factory Reset</option></select>
+            </div>
+            <div class="field"><label>New Credentials Provided To</label><input type="text" name="creds_given_to" placeholder="Name of person who received them"/></div>
+            <div class="field"><label>Delivery Method</label>
+              <select name="creds_delivery"><option value="">— Select —</option><option>Written on paper (handed to client)</option><option>Verbal only</option><option>Secure password manager</option><option>Texted to owner</option><option>Emailed to owner</option></select>
+            </div>
+          </div>
+          <div class="field" style="margin-top:16px;"><label>Reason for Reset</label><textarea name="reset_reason" placeholder="e.g. Previous admin unknown — taking over as IT POC"></textarea></div>
+
+          <div class="section-label">Authorization &amp; Sign-off</div>
+          <div class="auth-box">
+            <p>This log documents a credential change performed by HCHY IT Services. The authorized representative below confirms the change was requested and approved by them.</p>
+            <label class="auth-check"><input type="checkbox" name="authorization" value="Authorized" required/> The business owner / authorized representative has verbally approved this credential change. This record is accurate to the best of my knowledge.</label>
+          </div>
+          <div class="field" style="margin-top:18px;"><label>Technician Notes</label><textarea name="tech_notes" placeholder="Anything unusual, follow-up actions, recommended next steps..."></textarea></div>
+
+          <div class="submit-row">
+            <span class="submit-note">→ dan.garza@aifrienddan.com via Formspree</span>
+            <button type="submit" class="submit-btn">Submit Reset Log →</button>
+          </div>
+        </form>
+        <div class="success-msg" id="success-passwords">✅ Password reset log submitted! Check your inbox at dan.garza@aifrienddan.com.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM 4: NETWORK / ROUTER INFO -->
+  <div id="tab-network" class="form-panel">
+    <div class="form-card">
+      <div class="card-header">
+        <h2>Network &amp; Router Info Capture</h2>
+        <p>Map the full network environment — ISP, router, WiFi SSIDs, and observations</p>
+      </div>
+      <div class="card-body">
+        <form id="form-network" action="https://formspree.io/f/mgoddbvy" method="POST">
+          <input type="hidden" name="_subject" value="HCHY IT — Network Info Capture"/>
+          <input type="hidden" name="form_type" value="Network Info Capture"/>
+
+          <div class="section-label">Site &amp; Date</div>
+          <div class="grid-2">
+            <div class="field"><label>Business Name <span class="req">*</span></label><input type="text" name="business_name" required placeholder="Salon name"/></div>
+            <div class="field"><label>Date Captured <span class="req">*</span></label><input type="date" name="capture_date" required/></div>
+            <div class="field"><label>Technician</label><input type="text" name="tech_name" placeholder="Your name"/></div>
+          </div>
+
+          <div class="section-label">Internet Service Provider (ISP)</div>
+          <div class="grid-2">
+            <div class="field"><label>ISP Name <span class="req">*</span></label><input type="text" name="isp_name" required placeholder="e.g. Spectrum, AT&T, Xfinity"/></div>
+            <div class="field"><label>ISP Account Number</label><input type="text" name="isp_account" placeholder="Found on bill or ISP portal"/></div>
+            <div class="field"><label>ISP Support Phone</label><input type="tel" name="isp_phone" placeholder="1-800-XXX-XXXX"/></div>
+            <div class="field"><label>Service Plan / Speed Tier</label><input type="text" name="isp_plan" placeholder="e.g. 200 Mbps / Business Basic"/></div>
+            <div class="field"><label>Modem Make / Model</label><input type="text" name="modem_model" placeholder="e.g. Arris SB8200"/></div>
+            <div class="field"><label>Modem Serial Number</label><input type="text" name="modem_serial" placeholder="On label or bottom of modem"/></div>
+          </div>
+
+          <div class="section-label">Router / Access Point</div>
+          <div class="grid-2">
+            <div class="field"><label>Router Make / Model</label><input type="text" name="router_model" placeholder="e.g. TP-Link Archer AX55"/></div>
+            <div class="field"><label>Router Serial Number</label><input type="text" name="router_serial" placeholder="On label or bottom of router"/></div>
+            <div class="field"><label>Router Admin IP</label><input type="text" name="router_ip" placeholder="e.g. 192.168.1.1"/></div>
+            <div class="field"><label>Router Admin Username</label><input type="text" name="router_admin_user" placeholder="e.g. admin"/></div>
+            <div class="field"><label>Router Admin Password</label><input type="text" name="router_admin_pass" placeholder="Current admin password"/></div>
+            <div class="field"><label>Firmware Version (if known)</label><input type="text" name="router_firmware" placeholder="Found in router admin panel"/></div>
+          </div>
+
+          <div class="section-label">WiFi Networks (SSIDs)</div>
+          <div class="grid-3">
+            <div class="field"><label>Primary SSID (Staff WiFi)</label><input type="text" name="wifi_ssid_primary" placeholder="Network name"/></div>
+            <div class="field"><label>Primary WiFi Password</label><input type="text" name="wifi_pass_primary" placeholder="Current password"/></div>
+            <div class="field"><label>Security Type</label>
+              <select name="wifi_security_primary"><option value="">— Select —</option><option>WPA2</option><option>WPA3</option><option>WPA/WPA2 Mixed</option><option>Open (no password)</option><option>Unknown</option></select>
+            </div>
+            <div class="field"><label>Guest SSID</label><input type="text" name="wifi_ssid_guest" placeholder="Guest / client WiFi name"/></div>
+            <div class="field"><label>Guest WiFi Password</label><input type="text" name="wifi_pass_guest" placeholder="Current guest password"/></div>
+            <div class="field"><label>Guest Network Isolated?</label>
+              <select name="wifi_guest_isolated"><option value="">— Select —</option><option>Yes — guests can't see other devices</option><option>No — not isolated</option><option>Unknown</option></select>
+            </div>
+          </div>
+
+          <div class="section-label">Observations &amp; Recommendations</div>
+          <div class="field"><label>Known Issues</label><textarea name="network_issues" placeholder="Dead zones, slow speeds, devices dropping, cables needing replacement..."></textarea></div>
+          <div class="field" style="margin-top:14px;"><label>Recommended Actions</label><textarea name="network_recommendations" placeholder="Firmware update needed, guest network setup, new router recommended..."></textarea></div>
+
+          <div class="submit-row">
+            <span class="submit-note">→ dan.garza@aifrienddan.com via Formspree</span>
+            <button type="submit" class="submit-btn">Submit Network Info →</button>
+          </div>
+        </form>
+        <div class="success-msg" id="success-network">✅ Network info submitted! Check your inbox at dan.garza@aifrienddan.com.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  // TAB SWITCHING
+  function showTab(id, btn) {
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // ADD DEVICE ROW
+  let deviceCount = 1;
+  function addDevice() {
+    deviceCount++;
+    const n = deviceCount;
+    const list = document.getElementById('device-list');
+    const row = document.createElement('div');
+    row.className = 'device-row';
+    row.id = 'device-row-' + n;
+    row.innerHTML = `
+      <div class="device-row-header">
+        <span>Device #${n}</span>
+        <button type="button" class="remove-row" onclick="removeDevice(${n})">✕ Remove</button>
+      </div>
+      <div class="field"><label>Device Type</label>
+        <select name="device_type_${n}"><option value="">— Select —</option><option>Desktop Computer</option><option>Laptop</option><option>Tablet / iPad</option><option>POS Terminal</option><option>Printer</option><option>Router / Modem</option><option>Smart TV / Display</option><option>Phone / Landline</option><option>Other</option></select>
+      </div>
+      <div class="field"><label>Make / Brand</label><input type="text" name="device_make_${n}" placeholder="e.g. Dell, Apple, HP"/></div>
+      <div class="field"><label>Model</label><input type="text" name="device_model_${n}" placeholder="e.g. Inspiron 15"/></div>
+      <div class="field"><label>Serial Number</label><input type="text" name="device_serial_${n}" placeholder="On label or in settings"/></div>
+      <div class="field"><label>Asset / Tag #</label><input type="text" name="device_asset_${n}" placeholder="If applicable"/></div>
+      <div class="field"><label>Condition</label>
+        <select name="device_condition_${n}"><option value="">— Select —</option><option>Good</option><option>Fair</option><option>Needs Attention</option><option>Replace Soon</option></select>
+      </div>
+      <div class="field full"><label>Notes</label><input type="text" name="device_notes_${n}" placeholder="Location, issues, observations..."/></div>`;
+    list.appendChild(row);
+  }
+
+  function removeDevice(n) {
+    const row = document.getElementById('device-row-' + n);
+    if (row) row.remove();
+  }
+
+  // AJAX FORMSPREE SUBMIT
+  ['onboarding','devices','passwords','network'].forEach(id => {
+    const form = document.getElementById('form-' + id);
+    const msg  = document.getElementById('success-' + id);
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          msg.style.display = 'block';
+          msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          alert('Something went wrong. Email dan.garza@aifrienddan.com directly if this keeps happening.');
+        }
+      } catch(err) {
+        alert('Network error — check your connection and try again.');
+      }
+    });
+  });
+
+  // AUTO-SET TODAY'S DATE
+  const today = new Date().toISOString().split('T')[0];
+  document.querySelectorAll('input[type="date"]').forEach(el => { if (!el.value) el.value = today; });
+</script>
+</body>
+</html>
