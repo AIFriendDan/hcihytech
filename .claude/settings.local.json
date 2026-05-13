@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(claude-api)",
+      "Bash(npx tsc *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "PowerShell($shell = New-Object -ComObject WScript.Shell; $lnk = $shell.CreateShortcut\\(\"C:\\\\Users\\\\danra\\\\AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\Recent\\\\IMG_7611 \\(3\\).jpg.lnk\"\\); $lnk.TargetPath)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "context-mode"
+  ],
+  "enableAllProjectMcpServers": true
+}
