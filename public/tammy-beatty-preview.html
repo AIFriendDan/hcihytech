@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tammy Beatty — Facebook Post Mockup + Pitch</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&family=SF+Pro+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ivory: #F5F0E8;
+  --mocha: #3D2B1F;
+  --gold: #C9A84C;
+  --white: #FFFFFF;
+  --fb-bg: #F0F2F5;
+  --fb-card: #FFFFFF;
+  --fb-text: #050505;
+  --fb-secondary: #65676B;
+  --fb-blue: #1877F2;
+  --fb-border: #CED0D4;
+}
+
+body {
+  background: #111;
+  font-family: 'Lato', sans-serif;
+  padding: 60px 40px;
+}
+
+/* ═══════════════════════════════════
+   PAGE HEADER
+═══════════════════════════════════ */
+.page-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.page-header p {
+  color: #888;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════
+   TWO COLUMN LAYOUT
+═══════════════════════════════════ */
+.layout {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════
+   PHONE MOCKUP
+═══════════════════════════════════ */
+.phone-wrap {
+  flex-shrink: 0;
+  width: 390px;
+}
+.phone-label {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.phone {
+  width: 390px;
+  background: #000;
+  border-radius: 50px;
+  padding: 14px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.8), inset 0 0 0 2px #333;
+  position: relative;
+}
+.phone-notch {
+  width: 120px;
+  height: 28px;
+  background: #000;
+  border-radius: 0 0 18px 18px;
+  margin: 0 auto 8px;
+  position: relative;
+  z-index: 10;
+}
+.phone-screen {
+  background: var(--fb-bg);
+  border-radius: 38px;
+  overflow: hidden;
+  height: 780px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.phone-screen::-webkit-scrollbar { display: none; }
+
+/* ─── FB UI ─── */
+.fb-header {
+  background: white;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--fb-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.fb-logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--fb-blue);
+  font-family: Georgia, serif;
+}
+.fb-icons {
+  display: flex;
+  gap: 8px;
+}
+.fb-icon-btn {
+  width: 34px;
+  height: 34px;
+  background: #E4E6EB;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* ─── FB POST CARD ─── */
+.fb-post {
+  background: white;
+  margin: 8px 0;
+}
+.fb-post-header {
+  padding: 12px 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fb-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: url('https://hcihytech.vercel.app/assets/clients/tammy-beatty/tammy_slide6_headshot.png');
+  background-size: cover;
+  background-position: center top;
+  flex-shrink: 0;
+}
+.fb-post-meta { flex: 1; }
+.fb-post-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--fb-text);
+  font-family: system-ui;
+}
+.fb-post-sub {
+  font-size: 12px;
+  color: var(--fb-secondary);
+  font-family: system-ui;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.fb-post-options {
+  font-size: 20px;
+  color: var(--fb-secondary);
+}
+
+/* ─── POST CAPTION ─── */
+.fb-caption {
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--fb-text);
+  line-height: 1.5;
+  font-family: system-ui;
+}
+.fb-caption .hashtags {
+  color: var(--fb-blue);
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ─── CAROUSEL ─── */
+.fb-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+.carousel-slide {
+  width: 358px;
+  height: 358px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.c-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center top;
+}
+.c-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(30,10,5,0.75) 100%);
+}
+.c-content {
+  position: absolute; inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+}
+.c-tag {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+  font-family: 'Lato', sans-serif;
+}
+.c-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.c-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.c-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  color: var(--gold);
+  opacity: 0.2;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  line-height: 1;
+}
+.c-scripture {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10px;
+  color: var(--gold);
+  opacity: 0.8;
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+}
+/* Slide 6 CTA */
+.c-cta-center {
+  position: absolute; inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+.c-headshot-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-image: url('https://hcihytech.vercel.app/assets/clients/tammy-beatty/tammy_slide6_headshot.png');
+  background-size: cover;
+  background-position: center top;
+  border: 2px solid var(--gold);
+  margin-bottom: 12px;
+}
+.c-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: white;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+.c-role {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-family: 'Lato', sans-serif;
+}
+.c-gold-line {
+  width: 40px; height: 1px;
+  background: var(--gold);
+  margin-bottom: 10px;
+}
+.c-cta-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: white;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.c-handle {
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Carousel dots & arrows */
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0;
+  background: white;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dot.active { background: var(--fb-blue); }
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.carousel-btn.prev { left: 8px; }
+.carousel-btn.next { right: 8px; }
+
+/* ─── FB REACTIONS ─── */
+.fb-reactions {
+  padding: 8px 16px;
+  border-top: 1px solid var(--fb-border);
+  border-bottom: 1px solid var(--fb-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.reaction-count {
+  font-size: 13px;
+  color: var(--fb-secondary);
+  font-family: system-ui;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.fb-actions {
+  display: flex;
+  padding: 2px 8px;
+}
+.fb-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  font-size: 13px;
+  color: var(--fb-secondary);
+  font-weight: 600;
+  font-family: system-ui;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* ─── FB NAV BAR ─── */
+.fb-nav {
+  background: white;
+  border-top: 1px solid var(--fb-border);
+  display: flex;
+  padding: 8px 0;
+  position: sticky;
+  bottom: 0;
+}
+.fb-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  color: var(--fb-secondary);
+  gap: 2px;
+  font-family: system-ui;
+}
+.fb-nav-item.active { color: var(--fb-blue); }
+.fb-nav-icon { font-size: 20px; }
+
+/* ═══════════════════════════════════
+   PITCH PANEL
+═══════════════════════════════════ */
+.pitch-panel {
+  flex: 1;
+  color: white;
+}
+
+.pitch-section {
+  margin-bottom: 48px;
+}
+
+.pitch-section-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pitch-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(201,168,76,0.3);
+}
+
+.pitch-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: white;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.pitch-section p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+/* Tech cards */
+.tech-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.tech-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.tech-card .icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.tech-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.tech-card p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Posting time */
+.posting-schedule {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.time-slot {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.time-slot .day {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.time-slot .time {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: white;
+}
+
+.time-slot .note {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+}
+
+/* Hook list */
+.hook-list {
+  list-style: none;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hook-list li {
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid var(--gold);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.5;
+}
+
+.hook-list li strong {
+  color: var(--gold);
+  display: block;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* CTA block */
+.pitch-cta {
+  background: linear-gradient(135deg, var(--mocha), #1a0d07);
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+  padding: 36px;
+  text-align: center;
+}
+
+.pitch-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.pitch-cta p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.pitch-cta .price-tiers {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tier {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 10px;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.tier .tier-name {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.tier .tier-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: white;
+}
+
+.tier .tier-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
+.gold-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 40px 0;
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Tammy Beatty — Content Strategy Package</h1>
+  <p>Prepared by AI Friend Dan · HCiHY Tech Services</p>
+</div>
+
+<div class="layout">
+
+  <!-- ═══ PHONE MOCKUP ═══ -->
+  <div class="phone-wrap">
+    <div class="phone-label">📱 Facebook Post Preview</div>
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+
+        <!-- FB Header -->
+        <div class="fb-header">
+          <div class="fb-logo">facebook</div>
+          <div class="fb-icons">
+            <div class="fb-icon-btn">＋</div>
+            <div class="fb-icon-btn">🔍</div>
+            <div class="fb-icon-btn">💬</div>
+          </div>
+        </div>
+
+        <!-- FB Post -->
+        <div class="fb-post">
+          <div class="fb-post-header">
+            <div class="fb-avatar"></div>
+            <div class="fb-post-meta">
+              <div class="fb-post-name">Tammy Beatty</div>
+              <div class="fb-post-sub">Just now · 🌐 · 📍 Scottsdale, AZ</div>
+            </div>
+            <div class="fb-post-options">···</div>
+          </div>
+
+          <div class="fb-caption">
+            🙏 52 years old. 23 years as a stay-at-home mom. And now? I'm just getting started.<br><br>
+            I won't pretend the last few years have been easy. They haven't.<br><br>
+            Three things hit me harder than I expected...<br><br>
+            <span style="color:#1877F2; font-size:13px;">See more</span>
+            <div class="hashtags">
+              #RebuildingAt52 #FaithOverFear #WomenInRealEstate<br>
+              #ScottsdaleRealEstate #LivingArizona #TrustTheProcess
+            </div>
+          </div>
+
+          <!-- CAROUSEL -->
+          <div class="fb-carousel" style="position:relative;">
+            <div class="carousel-track" id="track">
+
+              <!-- Slide 1 -->
+              <div class="carousel-slide">
+                <div class="c-bg" style="background-image:url('https://hcihytech.vercel.app/assets/clients/tammy-beatty/tammy_slide1_city_night.png'); filter:brightness(0.4);"></div>
+                <div class="c-overlay"></div>
+                <div class="c-content">
+                  <div class="c-tag">My Story</div>
+                  <div class="c-title">52. Divorced.<br>Starting over.</div>
+                  <div class="c-sub">Here's what nobody tells you...</div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="carousel-slide">
+                <div class="c-bg" style="background-image:url('https://hcihytech.vercel.app/assets/clients/tammy-beatty/tammy_slide2_mirror_hip.png'); filter:brightness(0.35);"></div>
+                <div class="c-overlay"></div>
+                <div class="c-content">
+                  <div class="c-tag">The Setup</div>
+                  <div class="c-title">23 years as a stay-at-home mom. Then everything changed.</div>
+                  <div class="c-sub">Here are 3 things that challenged me most...</div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="carousel-slide">
+                <div class="c-bg" style="background-image:url('https://hcihytech.vercel.app/assets/clients/tammy-beatty/tammy_slide3_mirror_updo.png'); filter:brightness(0.3);"></div>
+                <div class="c-overlay"></div>
+                <div class="c-number">1</div>
+                <div class="c-content">
+                  <div class="c-tag">Challenge One</div>
+                  <div class="c-title">Figuring out who I was outside of being a wife and mom</div>
+                  <div class="c-sub">Identity doesn't come with a roadmap.</div>
+                </div>
+                <div class="c-scripture">Isaiah 60:22</div>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="carousel-slide">
+                <div class="c-bg" style="background-image:url('https://hcihytech.vercel.app/assets/clients/tammy-beatty/tammy_slide4_walking.png'); filter:brightness(0.3);"></div>
+                <div class="c-overlay"></div>
+                <div class="c-number">2</div>
+                <div class="c-content">
+                  <div class="c-tag">Challenge Two</div>
+                  <div class="c-title">Building a career from scratch at 52</div>
+                  <div class="c-sub">Real Estate Agent. Protein Ball business. Zero experience. All heart.</div>
+                </div>
+                <div class="c-scripture">Isaiah 60:22</div>
+              </div>
+
+              <!-- Slide 5 -->
+              <div class="carousel-slide">
+                <div class="c-bg" style="background-image:url('https://hcihytech.vercel.app/assets/clients/tammy-beatty/tammy_slide5_kintsugi.png'); filter:brightness(0.5);"></div>
+                <div class="c-overlay"></div>
+                <div class="c-number">3</div>
+                <div class="c-content">
+                  <div class="c-tag">Challenge Three</div>
+                  <div class="c-title">Learning to trust God when I couldn't see the plan</div>
+                  <div class="c-sub">He's always been faithful.</div>
+                </div>
+                <div class="c-scripture">Isaiah 60:22</div>
+              </div>
+
+              <!-- Slide 6 CTA -->
+              <div class="carousel-slide">
+                <div class="c-bg" style="background-image:url('https://hcihytech.vercel.app/assets/clients/tammy-beatty/tammy_slide6_headshot.png'); filter:brightness(0.25);"></div>
+                <div class="c-cta-center">
+                  <div class="c-headshot-circle"></div>
+                  <div class="c-name">TAMMY BEATTY</div>
+                  <div class="c-role">Real Estate · Living Arizona Group</div>
+                  <div class="c-gold-line"></div>
+                  <div class="c-cta-text">"DM me READY —<br>let's talk about your next chapter."</div>
+                  <div class="c-handle">@tammyjeansells</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Arrows -->
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">‹</button>
+            <button class="carousel-btn next" onclick="moveCarousel(1)">›</button>
+          </div>
+
+          <!-- Dots -->
+          <div class="carousel-nav">
+            <div class="dot active" onclick="goToSlide(0)"></div>
+            <div class="dot" onclick="goToSlide(1)"></div>
+            <div class="dot" onclick="goToSlide(2)"></div>
+            <div class="dot" onclick="goToSlide(3)"></div>
+            <div class="dot" onclick="goToSlide(4)"></div>
+            <div class="dot" onclick="goToSlide(5)"></div>
+          </div>
+
+          <!-- Reactions -->
+          <div class="fb-reactions">
+            <div class="reaction-count">👍❤️😮 <span>247 reactions</span></div>
+            <div style="font-size:13px;color:#65676B;font-family:system-ui;">81 comments · 12 shares</div>
+          </div>
+
+          <div class="fb-actions">
+            <div class="fb-action-btn">👍 Like</div>
+            <div class="fb-action-btn">💬 Comment</div>
+            <div class="fb-action-btn">↗️ Share</div>
+          </div>
+        </div>
+
+        <!-- FB Nav -->
+        <div class="fb-nav">
+          <div class="fb-nav-item active"><div class="fb-nav-icon">🏠</div>Home</div>
+          <div class="fb-nav-item"><div class="fb-nav-icon">📹</div>Reels</div>
+          <div class="fb-nav-item"><div class="fb-nav-icon">👥</div>Friends</div>
+          <div class="fb-nav-item"><div class="fb-nav-icon">🛒</div>Market</div>
+          <div class="fb-nav-item"><div class="fb-nav-icon">👤</div>Profile</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PITCH PANEL ═══ -->
+  <div class="pitch-panel">
+
+    <!-- INTRO -->
+    <div class="pitch-section">
+      <div class="pitch-section-label">The Pitch</div>
+      <h2>Tammy, I saw your post and I couldn't help myself.</h2>
+      <p>Your story is genuinely powerful. You're already doing the hard part — living it. I just rebuilt your post using every tool Facebook actually allows, and added a content strategy most Real Estate agents don't even know exists.</p>
+      <p>Here's exactly what I did, and why it matters for your brand and your business.</p>
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <!-- SCROLL STOPPING HOOKS -->
+    <div class="pitch-section">
+      <div class="pitch-section-label">Scroll-Stopping Hooks</div>
+      <h2>The first line is everything.</h2>
+      <p>Facebook cuts off your post after 2 lines before "See More." Most people bury their best line. We moved it to the front.</p>
+      <ul class="hook-list">
+        <li>
+          <strong>Your original opener</strong>
+          "My journey has stretched me, challenged me..." — starts soft, easy to scroll past
+        </li>
+        <li>
+          <strong>Upgraded hook</strong>
+          "52. Divorced. Starting over. And now? I'm just getting started." — stops the scroll cold in 8 words
+        </li>
+        <li>
+          <strong>Why it works</strong>
+          Pattern interrupts trigger curiosity. Short. Punchy. Personal. The algorithm rewards time-on-post — a better hook = more time = more reach.
+        </li>
+      </ul>
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <!-- CAROUSEL STRATEGY -->
+    <div class="pitch-section">
+      <div class="pitch-section-label">Carousel Architecture</div>
+      <h2>6 slides. One system. Infinite reuse.</h2>
+      <p>Facebook carousels get 3x more reach than single image posts. But structure matters. We built yours on the Hook → Story → Value → CTA framework.</p>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="icon">🎯</div>
+          <h3>Slide 1 — The Hook</h3>
+          <p>Pattern interrupt headline. Dark dramatic photo. Stops the scroll before they even read.</p>
+        </div>
+        <div class="tech-card">
+          <div class="icon">📖</div>
+          <h3>Slides 2–5 — The Story</h3>
+          <p>One message per slide. Consistent layout. Swipe-through momentum builds emotional investment.</p>
+        </div>
+        <div class="tech-card">
+          <div class="icon">💼</div>
+          <h3>Slide 6 — The CTA</h3>
+          <p>Professional headshot. Name. Title. One clear action. DM me READY converts better than any generic call-to-action.</p>
+        </div>
+        <div class="tech-card">
+          <div class="icon">♻️</div>
+          <h3>Reusable Template</h3>
+          <p>Same structure. Swap your story, photos, and numbers. Post a new carousel every week in under 30 minutes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <!-- POSTING TIMES -->
+    <div class="pitch-section">
+      <div class="pitch-section-label">Optimal Posting Schedule</div>
+      <h2>When you post is as important as what you post.</h2>
+      <p>Facebook's algorithm prioritizes early engagement. Post when your audience is actively scrolling — not when it's convenient for you.</p>
+      <div class="posting-schedule">
+        <div class="time-slot">
+          <div class="day">Tuesday</div>
+          <div class="time">9–11am</div>
+          <div class="note">Peak morning scroll</div>
+        </div>
+        <div class="time-slot">
+          <div class="day">Wednesday</div>
+          <div class="time">6–8pm</div>
+          <div class="note">Post-work prime time</div>
+        </div>
+        <div class="time-slot">
+          <div class="day">Thursday</div>
+          <div class="time">9–11am</div>
+          <div class="note">Highest weekly reach</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <!-- TECH STACK USED -->
+    <div class="pitch-section">
+      <div class="pitch-section-label">What We Used To Build This</div>
+      <h2>This isn't Canva and a prayer.</h2>
+      <p>Here's the actual tech stack behind what you're looking at right now:</p>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="icon">🤖</div>
+          <h3>AI Content Engine</h3>
+          <p>Claude Sonnet — rewrote your post two ways, optimized for engagement, emotional resonance, and conversion.</p>
+        </div>
+        <div class="tech-card">
+          <div class="icon">🎨</div>
+          <h3>Canva MCP Integration</h3>
+          <p>AI-connected directly to Canva to generate branded design candidates — not templates, actual custom designs.</p>
+        </div>
+        <div class="tech-card">
+          <div class="icon">☁️</div>
+          <h3>Private Media CDN</h3>
+          <p>Your photos are hosted on a private Vercel-deployed asset server — clean public URLs, zero third-party dependency.</p>
+        </div>
+        <div class="tech-card">
+          <div class="icon">📊</div>
+          <h3>Hashtag Strategy</h3>
+          <p>Hyper-local Scottsdale/Arizona tags layered with niche real estate and faith-forward tags for maximum local reach.</p>
+        </div>
+        <div class="tech-card">
+          <div class="icon">🔗</div>
+          <h3>First Comment CTA</h3>
+          <p>Your listing link goes in the first comment — keeps the post reach clean while still capturing leads.</p>
+        </div>
+        <div class="tech-card">
+          <div class="icon">📍</div>
+          <h3>Location + Alt Text</h3>
+          <p>Scottsdale geo-tag + descriptive alt text on every image = accessibility compliance AND SEO signal to Facebook.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <!-- PITCH CTA -->
+    <div class="pitch-cta">
+      <h2>This took me a few hours.<br>Imagine what a month looks like.</h2>
+      <p>This is what I do — I take your story, your brand, and your business and turn it into content that actually works operationally. No fluff. No generic templates. Just strategy, tech, and execution.</p>
+      <div class="price-tiers">
+        <div class="tier">
+          <div class="tier-name">Starter</div>
+          <div class="tier-price">$497</div>
+          <div class="tier-desc">One-time brand setup</div>
+        </div>
+        <div class="tier">
+          <div class="tier-name">Growth</div>
+          <div class="tier-price">$997<span style="font-size:16px;">/mo</span></div>
+          <div class="tier-desc">Monthly content system</div>
+        </div>
+        <div class="tier">
+          <div class="tier-name">VIP</div>
+          <div class="tier-price">$1,997<span style="font-size:16px;">/mo</span></div>
+          <div class="tier-desc">Full done-for-you</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let current = 0;
+const total = 6;
+
+function moveCarousel(dir) {
+  current = (current + dir + total) % total;
+  updateCarousel();
+}
+
+function goToSlide(index) {
+  current = index;
+  updateCarousel();
+}
+
+function updateCarousel() {
+  document.getElementById('track').style.transform = `translateX(-${current * 358}px)`;
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle('active', i === current);
+  });
+}
+</script>
+</body>
+</html>
