@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCiHY Tech Services — Business Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:     #e40014;
+    --black:   #080808;
+    --white:   #f5f5f0;
+    --dim:     #141414;
+    --muted:   #2a2a2a;
+    --textdim: #888;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #111;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    padding: 60px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #333;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .card {
+    width: 672px;
+    height: 384px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.06),
+      0 40px 100px rgba(0,0,0,0.7),
+      0 8px 24px rgba(0,0,0,0.5);
+  }
+
+  /* ══ FRONT ══ */
+  .card-front {
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 1fr 210px;
+  }
+
+  .front-main {
+    padding: 36px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border-right: 1px solid var(--muted);
+  }
+
+  .front-main::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(to bottom, var(--red), rgba(228,0,20,0.3));
+  }
+
+  .front-main::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 10% 90%, rgba(228,0,20,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .brand-block { position: relative; z-index: 1; }
+
+  .brand-wordmark {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -1px;
+  }
+
+  .brand-wordmark .hi { color: var(--red); }
+
+  /* FIXED: brighter + bigger */
+  .brand-services {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    color: #bbb;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* FIXED: brighter + bigger */
+  .brand-descriptor {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #666;
+    text-transform: uppercase;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #222;
+  }
+
+  .person-block { position: relative; z-index: 1; }
+
+  .person-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: 0.3px;
+  }
+
+  .person-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    font-weight: 400;
+    color: var(--red);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+
+  .nfc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    background: rgba(228,0,20,0.08);
+    border: 1px solid rgba(228,0,20,0.25);
+    border-radius: 3px;
+    padding: 4px 9px;
+    width: fit-content;
+  }
+
+  .nfc-icon { width: 10px; height: 10px; fill: var(--red); opacity: 0.9; }
+
+  .nfc-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: var(--red);
+    opacity: 0.8;
+    text-transform: uppercase;
+  }
+
+  /* Right panel */
+  .front-side {
+    background: #0c0c0c;
+    padding: 30px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .contact-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-item { display: flex; flex-direction: column; gap: 3px; }
+
+  /* FIXED: bigger, brighter labels */
+  .c-label {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #666;
+    font-weight: 500;
+  }
+
+  /* FIXED: bigger contact values */
+  .c-value {
+    font-size: 11px;
+    color: #999;
+    font-weight: 400;
+    word-break: break-all;
+    line-height: 1.4;
+  }
+
+  .c-value.bright { color: var(--white); }
+
+  .qr-wrap { display: flex; flex-direction: column; gap: 5px; }
+
+  .qr-frame {
+    width: 72px;
+    height: 72px;
+    background: var(--white);
+    border-radius: 4px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-frame img { width: 100%; height: 100%; display: block; }
+
+  .qr-caption {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  /* ══ BACK ══ */
+  .card-back {
+    background: var(--red);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-back::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .back-watermark {
+    position: absolute;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 160px;
+    color: rgba(0,0,0,0.08);
+    letter-spacing: -6px;
+    user-select: none;
+    line-height: 1;
+    right: -20px;
+    bottom: -30px;
+  }
+
+  .back-corner-tl {
+    position: absolute;
+    top: 0; left: 0;
+    width: 70px; height: 70px;
+    background: rgba(255,255,255,0.12);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+
+  .back-corner-br {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 90px; height: 90px;
+    background: rgba(0,0,0,0.15);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+
+  .back-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .back-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 64px;
+    letter-spacing: -1px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .back-logo .dark { color: rgba(0,0,0,0.3); }
+
+  .back-tagline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  .back-divider {
+    width: 36px;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+    margin: 12px 0;
+  }
+
+  .back-url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .print-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #2a2a2a;
+    text-align: center;
+    padding: 16px 24px;
+    border: 1px solid #1e1e1e;
+    border-radius: 4px;
+    max-width: 520px;
+    line-height: 2;
+  }
+
+  @media print {
+    body { background: white; padding: 0; gap: 0; }
+    .label, .print-note { display: none; }
+    .card {
+      box-shadow: none;
+      border-radius: 0;
+      width: 3.5in;
+      height: 2in;
+      page-break-after: always;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="label">Front — 3.5" × 2" Print Ready</div>
+<div class="card card-front">
+  <div class="front-main">
+    <div class="brand-block">
+      <div class="brand-wordmark">HC<span class="hi">i</span>HY</div>
+      <div class="brand-services">Tech &nbsp;Services</div>
+      <div class="brand-descriptor">IT Support &nbsp;·&nbsp; Web Dev &nbsp;·&nbsp; AI Solutions</div>
+    </div>
+    <div class="person-block">
+      <div class="person-name">Dan Garza</div>
+      <div class="person-title">Founder</div>
+      <div class="nfc-badge">
+        <svg class="nfc-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 14.5h-2V12l-3 4.5H8V8h2v4.5l3-4.5h2v8z"/>
+        </svg>
+        <span class="nfc-text">NFC · Tap to Connect</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="front-side">
+    <div class="contact-stack">
+      <div class="contact-item">
+        <span class="c-label">Phone</span>
+        <span class="c-value bright">805-616-4676</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-label">Email</span>
+        <span class="c-value">dan.garza@<br>hcihytechsvc.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-label">Web</span>
+        <span class="c-value bright">hcihytech.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-label">Instagram</span>
+        <span class="c-value">@hcihytech</span>
+      </div>
+    </div>
+
+    <div class="qr-wrap">
+      <div class="qr-frame">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://hcihytech.com&bgcolor=f5f5f0&color=080808&margin=0"
+          alt="QR → hcihytech.com"
+        />
+      </div>
+      <span class="qr-caption">Scan → hcihytech.com</span>
+    </div>
+  </div>
+</div>
+
+<div class="label">Back — Reverse Side</div>
+<div class="card card-back">
+  <div class="back-watermark">HC</div>
+  <div class="back-corner-tl"></div>
+  <div class="back-corner-br"></div>
+  <div class="back-content">
+    <div class="back-logo">HC<span class="dark">i</span>HY</div>
+    <div class="back-tagline">Tech Services</div>
+    <div class="back-divider"></div>
+    <div class="back-url">hcihytech.com</div>
+  </div>
+</div>
+
+<div class="print-note">
+  PRINT INSTRUCTIONS &nbsp;·&nbsp; Open in Chrome or Edge &nbsp;→&nbsp; File → Print<br>
+  Paper: 3.5" × 2" &nbsp;·&nbsp; Margins: None &nbsp;·&nbsp; Background graphics: ON<br>
+  Export as PDF to hand off to print shop or NFC card vendor
+</div>
+
+</body>
+</html>
