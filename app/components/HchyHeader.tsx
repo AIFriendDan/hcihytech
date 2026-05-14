@@ -9,6 +9,7 @@ import { CONTACT } from '../lib/services-data'
 const navLinks = [
   { href: '#web-design', label: 'Web Design' },
   { href: '#ai-services', label: 'AI Services' },
+  { href: '#social-media', label: 'Social Media' },
   { href: '#it-services', label: 'IT Services' },
   { href: '#why-us', label: 'Why Us' },
   { href: '#contact', label: 'Contact' },
