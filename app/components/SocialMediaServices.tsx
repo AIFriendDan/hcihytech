@@ -143,7 +143,7 @@ export default function SocialMediaServices() {
             }}
             className="inline-block rounded-md bg-red-600 px-6 py-3 text-sm font-medium text-white hover:bg-red-700 transition-all"
           >
-            Get Your Free Preview
+            Request Your Free Content Audit
           </a>
         </motion.div>
       </motion.div>
