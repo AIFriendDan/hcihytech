@@ -32,7 +32,7 @@ export default function HchyContactCta() {
     setError('')
     setLoading(true)
 
-    const result = await submitLead({ ...formData, source: 'hchy' })
+    const result = await submitLead({ ...formData, source: 'contact-form' })
     setLoading(false)
 
     if (result.success) {

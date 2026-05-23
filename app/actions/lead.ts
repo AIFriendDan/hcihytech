@@ -1,6 +1,7 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
+import { sendSlackNotification } from '@/lib/slack'
 
 export async function submitLead(formData: {
   name: string
@@ -10,7 +11,7 @@ export async function submitLead(formData: {
   message?: string
   source?: string
 }) {
-  const { name, email, phone, service, message, source = 'hchy' } = formData
+  const { name, email, phone, service, message, source = 'contact-form' } = formData
 
   if (!name || !email) {
     return { success: false, error: 'Name and email are required.' }
@@ -22,7 +23,7 @@ export async function submitLead(formData: {
   }
 
   try {
-    await prisma.lead.create({
+    const lead = await prisma.lead.create({
       data: {
         name,
         email,
@@ -33,6 +34,7 @@ export async function submitLead(formData: {
         status: 'new',
       },
     })
+    sendSlackNotification(lead).catch(console.error)
     return { success: true }
   } catch (error) {
     console.error('Lead submission error:', error)
