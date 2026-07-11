@@ -8,10 +8,11 @@
       }
     },
     "lead-processing-agent": {
+      "assetPrefix": "leads-assets",
       "routing": [
         {
           "group": "leads",
-          "paths": ["/leads", "/leads/:path*"]
+          "paths": ["/leads", "/leads/:path*", "/leads-assets/:path*"]
         }
       ],
       "development": {
