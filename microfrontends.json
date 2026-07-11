@@ -12,7 +12,7 @@
       "routing": [
         {
           "group": "leads",
-          "paths": ["/leads", "/leads/:path*", "/leads-assets/:path*"]
+          "paths": ["/leads", "/leads/:path*", "/leads-assets/:path*", "/149e9513-01fa-4fb0-aad4-566afd725d1b/:path*"]
         }
       ],
       "development": {
