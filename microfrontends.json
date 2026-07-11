@@ -1,0 +1,22 @@
+{
+  "$schema": "https://openapi.vercel.sh/microfrontends.json",
+  "version": "1",
+  "applications": {
+    "hcihytech": {
+      "development": {
+        "fallback": "www.hcihytech.com"
+      }
+    },
+    "lead-processing-agent": {
+      "routing": [
+        {
+          "group": "leads",
+          "paths": ["/leads", "/leads/:path*"]
+        }
+      ],
+      "development": {
+        "fallback": "lead-processing-agent-hchy.vercel.app"
+      }
+    }
+  }
+}
