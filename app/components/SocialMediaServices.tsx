@@ -72,10 +72,10 @@ export default function SocialMediaServices() {
       >
         <motion.div variants={item} className="text-center space-y-4">
           <div className="flex justify-center">
-            <Share2 size={40} className="text-red-600" />
+            <Share2 size={40} className="text-hcihy-emerald" />
           </div>
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Social Media <span className="text-red-600">Content Strategy</span>
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Social Media <span className="text-hcihy-emerald">Content Strategy</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-neutral-400">
             We turn your story into content that actually works.
@@ -87,37 +87,29 @@ export default function SocialMediaServices() {
             <motion.div
               key={tier.name}
               variants={item}
-              className={`relative flex flex-col p-6 rounded-lg border ${
-                tier.highlighted
-                  ? 'border-red-600 bg-neutral-900/70 shadow-lg shadow-red-900/20'
-                  : 'border-red-900/30 bg-neutral-900/50'
-              } hover:border-red-600/50 transition-colors`}
+              className={`relative flex flex-col p-6 ${
+                tier.highlighted ? 'hcihy-card-highlighted' : 'hcihy-card'
+              }`}
             >
-              {tier.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                  {tier.badge}
-                </div>
-              )}
-              <h3 className="text-xl font-bold text-white">{tier.name}</h3>
+              {tier.badge && <div className="hcihy-badge">{tier.badge}</div>}
+              <h3 className="font-headline text-xl font-bold text-white">{tier.name}</h3>
               <p className="mt-2">
-                <span className="text-3xl font-extrabold text-red-600">{tier.price}</span>
+                <span className="text-3xl font-extrabold text-hcihy-blue">{tier.price}</span>
                 <span className="text-neutral-400 text-sm">{tier.billing}</span>
               </p>
               <p className="text-neutral-400 mt-2 text-sm">{tier.description}</p>
               <ul className="mt-6 space-y-3 flex-grow">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2 text-sm text-neutral-300">
-                    <Check size={16} className="text-red-600 mt-0.5 shrink-0" />
+                    <Check size={16} className="text-hcihy-emerald mt-0.5 shrink-0" />
                     {feature}
                   </li>
                 ))}
               </ul>
               <a
                 href="#contact"
-                className={`mt-6 block w-full text-center rounded-md py-3 text-sm font-medium transition-all ${
-                  tier.highlighted
-                    ? 'bg-red-600 text-white hover:bg-red-700'
-                    : 'border border-red-900/50 text-white hover:bg-red-900/20'
+                className={`mt-6 w-full text-sm ${
+                  tier.highlighted ? 'btn-hcihy-primary' : 'btn-hcihy-secondary'
                 }`}
               >
                 Get Started
@@ -131,7 +123,7 @@ export default function SocialMediaServices() {
             href="https://www.hcihytech.com/tammy-beatty-preview.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded-md border border-red-600 px-6 py-3 text-sm font-medium text-red-600 hover:bg-red-600 hover:text-white transition-all"
+            className="btn-hcihy-secondary text-sm"
           >
             See a Live Example →
           </a>
@@ -141,7 +133,7 @@ export default function SocialMediaServices() {
               e.preventDefault()
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
             }}
-            className="inline-block rounded-md bg-red-600 px-6 py-3 text-sm font-medium text-white hover:bg-red-700 transition-all"
+            className="btn-hcihy-primary text-sm"
           >
             Request Your Free Content Audit
           </a>

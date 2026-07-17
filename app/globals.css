@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* HCiHY canon palette — Notion Color System doc, locked to Dan's approved logo sheet. Never extend with new hues. */
+  --hcihy-navy: #0a1f44;
+  --hcihy-blue: #0589ff;
+  --hcihy-cyan: #00d4ff;
+  --hcihy-emerald: #39ff9c;
+  --hcihy-volt: #a8ff00;
+  --hcihy-violet: #8e5cff;
+  --hcihy-chrome: #c0c6d4;
+  --hcihy-error-red: #e5484d;
+  --hcihy-black: #000000;
+  --hcihy-white: #ffffff;
+
+  /* Semantic aliases per Color System doc section 2 */
+  --hcihy-success: var(--hcihy-emerald);
+  --hcihy-info: var(--hcihy-cyan);
+  --hcihy-warning: var(--hcihy-volt);
+  --hcihy-danger: var(--hcihy-error-red);
+
+  --background: var(--hcihy-black);
+  --foreground: var(--hcihy-white);
+
+  /* Elevated surfaces (header, cards, panels) layer Navy over the black page base instead of a new gray */
+  --surface: var(--hcihy-navy);
+
+  /* Eurostile is licensed/logo-only and not self-hosted here — the stack falls through to Space Grotesk, which the Typography doc confirms is the intended workhorse substitute at UI sizes. */
+  --font-display: "Eurostile", var(--font-space-grotesk), -apple-system, "Segoe UI", sans-serif;
+  --font-headline: var(--font-space-grotesk), -apple-system, "Segoe UI", sans-serif;
+  --font-body: var(--font-inter), -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-code: var(--font-jetbrains-mono), "Courier New", monospace;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-hcihy-navy: var(--hcihy-navy);
+  --color-hcihy-blue: var(--hcihy-blue);
+  --color-hcihy-cyan: var(--hcihy-cyan);
+  --color-hcihy-emerald: var(--hcihy-emerald);
+  --color-hcihy-volt: var(--hcihy-volt);
+  --color-hcihy-violet: var(--hcihy-violet);
+  --color-hcihy-chrome: var(--hcihy-chrome);
+  --color-hcihy-error: var(--hcihy-error-red);
+  --color-hcihy-success: var(--hcihy-success);
+  --color-hcihy-info: var(--hcihy-info);
+  --color-hcihy-warning: var(--hcihy-warning);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-code);
+  --font-display: var(--font-display);
+  --font-headline: var(--font-headline);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+}
+
+/* Body text stays 16px minimum per Typography doc accessibility rule */
+body {
+  font-size: 16px;
+}
+
+::selection {
+  background: var(--hcihy-blue);
+  color: var(--hcihy-navy);
+}
+
+:focus-visible {
+  outline: 2px solid var(--hcihy-cyan);
+  outline-offset: 2px;
+}
+
+@layer components {
+  /* Filled primary action. Navy text (not white) on Signal Blue is the accessible pairing —
+     white-on-Signal-Blue only clears ~3.5:1, Navy-on-Signal-Blue clears ~4.75:1 AA for normal text. */
+  .btn-hcihy-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-hcihy-blue px-6 py-3 font-semibold text-hcihy-navy transition-all hover:bg-hcihy-cyan active:scale-[0.98];
+  }
+
+  .btn-hcihy-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-hcihy-chrome/30 bg-transparent px-6 py-3 font-medium text-white transition-all hover:border-hcihy-cyan/60 hover:bg-hcihy-blue/10;
+  }
+
+  .hcihy-card {
+    @apply rounded-lg border border-hcihy-chrome/15 bg-hcihy-navy/40 backdrop-blur-sm transition-colors hover:border-hcihy-blue/40;
+  }
+
+  .hcihy-card-highlighted {
+    @apply rounded-lg border border-hcihy-blue bg-hcihy-navy/60 shadow-lg shadow-hcihy-blue/20 backdrop-blur-sm;
+  }
+
+  .hcihy-badge {
+    @apply absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-hcihy-volt px-3 py-1 text-xs font-bold text-hcihy-navy;
+  }
+
+  .hcihy-input {
+    @apply w-full rounded border border-hcihy-chrome/25 bg-hcihy-navy/30 p-3 text-white outline-none transition-colors focus:border-hcihy-cyan;
+  }
 }

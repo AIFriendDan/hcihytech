@@ -29,8 +29,8 @@ export default function WebDesignPackages() {
         viewport={{ once: true, amount: 0.1 }}
       >
         <motion.div variants={item} className="text-center space-y-4">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Website Design <span className="text-red-600">Packages</span>
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            Website Design <span className="text-hcihy-blue">Packages</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-neutral-400">
             Every business deserves a professional website. Choose a package

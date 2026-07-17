@@ -19,11 +19,15 @@ export function HchyHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-red-900/30 bg-[#0D0D0D]/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-hcihy-chrome/15 bg-hcihy-navy/80 backdrop-blur-sm">
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="text-xl font-bold tracking-tight text-white hover:opacity-80 transition-opacity">
-          <span className="font-bold tracking-wide">
-            HC<span className="lowercase">i</span>HY Tech
+        <Link href="/" className="text-xl font-headline font-bold tracking-tight hover:opacity-80 transition-opacity">
+          <span className="tracking-wide">
+            <span className="text-hcihy-blue">
+              HC<span className="lowercase">i</span>
+            </span>
+            <span className="text-hcihy-volt">HY</span>
+            <span className="text-white"> Tech</span>
           </span>
         </Link>
 
@@ -32,7 +36,7 @@ export function HchyHeader() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-neutral-400 transition-colors hover:text-red-500"
+              className="text-sm font-medium text-neutral-400 transition-colors hover:text-hcihy-cyan"
             >
               {link.label}
             </a>
@@ -46,10 +50,7 @@ export function HchyHeader() {
           >
             <Phone size={16} /> {CONTACT.phone}
           </a>
-          <a
-            href="#contact"
-            className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 transition-all"
-          >
+          <a href="#contact" className="btn-hcihy-primary !px-4 !py-2 text-sm">
             Get a Quote
           </a>
         </div>
@@ -65,7 +66,7 @@ export function HchyHeader() {
 
       {mobileMenuOpen && (
         <motion.div
-          className="md:hidden border-t border-red-900/30 bg-[#0D0D0D] px-6 py-4"
+          className="md:hidden border-t border-hcihy-chrome/15 bg-hcihy-navy px-6 py-4"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
         >
@@ -80,17 +81,17 @@ export function HchyHeader() {
                 {link.label}
               </a>
             ))}
-            <div className="flex flex-col gap-3 pt-4 border-t border-red-900/30">
+            <div className="flex flex-col gap-3 pt-4 border-t border-hcihy-chrome/15">
               <a
                 href={CONTACT.phoneHref}
-                className="flex items-center gap-2 py-2 text-sm text-red-500"
+                className="flex items-center gap-2 py-2 text-sm text-hcihy-cyan"
               >
                 <Phone size={16} /> {CONTACT.phone}
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white text-center hover:bg-red-700"
+                className="btn-hcihy-primary w-full text-center text-sm"
               >
                 Get a Quote
               </a>

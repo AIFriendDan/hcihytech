@@ -1,13 +1,26 @@
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
+import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google'
 import { HchyHeader } from './components/HchyHeader'
 import { HchyFooter } from './components/HchyFooter'
 import { ChatWidget } from './components/ChatWidget'
 import './globals.css'
 
-const poppins = Poppins({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -39,8 +52,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={poppins.className}>
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="font-sans antialiased">
         <HchyHeader />
         {children}
         <HchyFooter />

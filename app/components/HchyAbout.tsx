@@ -14,7 +14,7 @@ const container: Variants = {
 
 export default function HchyAbout() {
   return (
-    <section id="about" className="w-full bg-neutral-900 py-20 sm:py-28">
+    <section id="about" className="w-full bg-hcihy-navy/30 py-20 sm:py-28">
       <motion.div
         className="container mx-auto max-w-4xl px-6"
         variants={container}
@@ -22,8 +22,8 @@ export default function HchyAbout() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-8">
-          About <span className="text-red-600">Dan</span>
+        <h2 className="font-headline text-3xl font-bold tracking-tight text-white sm:text-4xl mb-8">
+          About <span className="text-hcihy-blue">Dan</span>
         </h2>
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8">
           <div className="shrink-0">

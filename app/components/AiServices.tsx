@@ -21,7 +21,7 @@ const item: Variants = {
 
 export default function AiServices() {
   return (
-    <section id="ai-services" className="w-full bg-neutral-900/50 py-20 sm:py-32">
+    <section id="ai-services" className="w-full bg-hcihy-navy/20 py-20 sm:py-32">
       <motion.div
         className="container mx-auto max-w-5xl space-y-12 px-6"
         variants={container}
@@ -31,10 +31,10 @@ export default function AiServices() {
       >
         <motion.div variants={item} className="text-center space-y-4">
           <div className="flex justify-center">
-            <Bot size={40} className="text-red-600" />
+            <Bot size={40} className="text-hcihy-violet" />
           </div>
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            AI <span className="text-red-600">Transformation</span>
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            AI <span className="text-hcihy-violet">Transformation</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-neutral-400">
             Stop paying humans to do what AI can handle. We help local businesses

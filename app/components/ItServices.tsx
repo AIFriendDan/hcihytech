@@ -36,8 +36,8 @@ export default function ItServices() {
         viewport={{ once: true, amount: 0.2 }}
       >
         <motion.div variants={item} className="text-center space-y-4">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Traditional <span className="text-red-600">IT Services</span>
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Traditional <span className="text-hcihy-blue">IT Services</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-neutral-400">
             Fast, reliable tech support for homes and businesses.
@@ -47,12 +47,8 @@ export default function ItServices() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((svc, i) => (
-            <motion.div
-              key={i}
-              variants={item}
-              className="p-6 bg-neutral-900/50 rounded-lg border border-red-900/30 hover:border-red-600/50 transition-colors"
-            >
-              <svc.icon size={32} className="text-red-600 mb-4" />
+            <motion.div key={i} variants={item} className="hcihy-card p-6">
+              <svc.icon size={32} className="text-hcihy-blue mb-4" />
               <h3 className="text-lg font-bold text-white">{svc.title}</h3>
               <p className="mt-2 text-sm text-neutral-400">{svc.desc}</p>
             </motion.div>
@@ -60,10 +56,7 @@ export default function ItServices() {
         </div>
 
         <motion.div variants={item} className="text-center">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-md border border-red-900/50 px-6 py-3 text-sm font-medium text-white hover:bg-red-900/20 transition-all"
-          >
+          <a href="#contact" className="btn-hcihy-secondary text-sm">
             Request IT Support
           </a>
         </motion.div>

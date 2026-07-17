@@ -163,16 +163,16 @@ export function ChatWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       {isOpen && (
-        <div className="flex flex-col w-[360px] max-h-[560px] rounded-2xl border border-red-900/40 bg-[#0D0D0D] shadow-2xl shadow-black/60 overflow-hidden">
+        <div className="flex flex-col w-[360px] max-h-[560px] rounded-2xl border border-hcihy-chrome/20 bg-hcihy-navy/95 backdrop-blur-sm shadow-2xl shadow-black/60 overflow-hidden">
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 bg-red-700 shrink-0">
+          <div className="flex items-center justify-between px-4 py-3 bg-hcihy-blue shrink-0">
             <div className="flex items-center gap-2">
-              <Bot size={18} className="text-white" />
-              <span className="text-sm font-semibold text-white">HCiHY Tech Assistant</span>
+              <Bot size={18} className="text-hcihy-navy" />
+              <span className="text-sm font-semibold text-hcihy-navy">HCiHY Tech Assistant</span>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-white/80 hover:text-white transition-colors"
+              className="text-hcihy-navy/70 hover:text-hcihy-navy transition-colors"
               aria-label="Close chat"
             >
               <X size={18} />
@@ -189,7 +189,7 @@ export function ChatWidget() {
                 <div
                   className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm leading-relaxed whitespace-pre-wrap break-words ${
                     msg.role === 'user'
-                      ? 'bg-red-700 text-white rounded-br-sm'
+                      ? 'bg-hcihy-blue text-hcihy-navy font-medium rounded-br-sm'
                       : 'bg-neutral-800 text-neutral-100 rounded-bl-sm'
                   }`}
                 >
@@ -216,13 +216,13 @@ export function ChatWidget() {
               placeholder="Type a message…"
               rows={1}
               disabled={isLoading}
-              className="flex-1 resize-none bg-neutral-900 border border-neutral-700 rounded-xl px-3 py-2 text-sm text-white placeholder-neutral-500 outline-none focus:border-red-600 transition-colors disabled:opacity-50 max-h-24 overflow-y-auto"
+              className="flex-1 resize-none bg-neutral-900 border border-neutral-700 rounded-xl px-3 py-2 text-sm text-white placeholder-neutral-500 outline-none focus:border-hcihy-cyan transition-colors disabled:opacity-50 max-h-24 overflow-y-auto"
               style={{ scrollbarWidth: 'none' }}
             />
             <button
               onClick={sendMessage}
               disabled={!input.trim() || isLoading}
-              className="shrink-0 p-2 bg-red-600 hover:bg-red-700 disabled:opacity-40 disabled:cursor-not-allowed rounded-xl text-white transition-colors"
+              className="shrink-0 p-2 bg-hcihy-blue hover:bg-hcihy-cyan disabled:opacity-40 disabled:cursor-not-allowed rounded-xl text-hcihy-navy transition-colors"
               aria-label="Send message"
             >
               <Send size={16} />
@@ -234,7 +234,7 @@ export function ChatWidget() {
       {/* Floating button */}
       <button
         onClick={() => setIsOpen((o) => !o)}
-        className="w-14 h-14 rounded-full bg-red-600 hover:bg-red-700 shadow-lg shadow-red-900/50 flex items-center justify-center text-white transition-all hover:scale-105 active:scale-95"
+        className="w-14 h-14 rounded-full bg-hcihy-blue hover:bg-hcihy-cyan shadow-lg shadow-hcihy-blue/30 flex items-center justify-center text-hcihy-navy transition-all hover:scale-105 active:scale-95"
         aria-label={isOpen ? 'Close chat' : 'Open chat'}
       >
         {isOpen ? <X size={22} /> : <MessageCircle size={22} />}

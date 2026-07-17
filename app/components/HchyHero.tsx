@@ -23,17 +23,17 @@ export default function HchyHero() {
         animate="show"
       >
         <motion.div variants={item} className="flex items-center justify-center gap-2 text-neutral-400">
-          <MapPin size={16} className="text-red-600" />
+          <MapPin size={16} className="text-hcihy-cyan" />
           <span className="text-sm font-medium">Serving Ventura County &amp; Beyond</span>
         </motion.div>
 
         <motion.h1
           variants={item}
-          className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
+          className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
         >
           Websites That Work
           <br className="hidden sm:block" />
-          <span className="text-red-600">As Hard As You Do.</span>
+          <span className="text-hcihy-blue">As Hard As You Do.</span>
         </motion.h1>
 
         <motion.p
@@ -47,7 +47,7 @@ export default function HchyHero() {
         <motion.div variants={item} className="flex flex-col justify-center gap-4 pt-4 sm:flex-row">
           <motion.a
             href="#web-design"
-            className="group flex h-12 items-center justify-center gap-2 rounded-md bg-red-600 px-8 text-lg font-medium text-white shadow-md transition-all hover:bg-red-700"
+            className="btn-hcihy-primary group h-12 px-8 text-lg shadow-md"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -57,7 +57,7 @@ export default function HchyHero() {
 
           <motion.a
             href="#contact"
-            className="flex h-12 items-center justify-center gap-2 rounded-md border border-red-900/50 bg-transparent px-8 text-lg font-medium text-white transition-all hover:bg-red-900/20"
+            className="btn-hcihy-secondary h-12 px-8 text-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

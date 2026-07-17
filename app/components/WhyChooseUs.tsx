@@ -26,7 +26,7 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-us" className="w-full bg-neutral-900/50 py-20 sm:py-32">
+    <section id="why-us" className="w-full bg-hcihy-navy/20 py-20 sm:py-32">
       <motion.div
         className="container mx-auto max-w-4xl space-y-12 px-6"
         variants={container}
@@ -36,16 +36,21 @@ export default function WhyChooseUs() {
       >
         <motion.h2
           variants={item}
-          className="text-3xl font-bold tracking-tight text-white sm:text-4xl text-center"
+          className="font-headline text-3xl font-bold tracking-tight text-white sm:text-4xl text-center"
         >
-          Why <span className="text-red-600">HC<span className="lowercase">i</span>HY Tech</span>?
+          Why{' '}
+          <span className="text-hcihy-blue">
+            HC<span className="lowercase">i</span>
+          </span>
+          <span className="text-hcihy-volt">HY</span>{' '}
+          Tech?
         </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {reasons.map((r, i) => (
             <motion.div key={i} variants={item} className="flex gap-4">
-              <div className="shrink-0 w-12 h-12 rounded-lg bg-red-600/10 flex items-center justify-center">
-                <r.icon size={24} className="text-red-600" />
+              <div className="shrink-0 w-12 h-12 rounded-lg bg-hcihy-blue/10 flex items-center justify-center">
+                <r.icon size={24} className="text-hcihy-blue" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">{r.title}</h3>

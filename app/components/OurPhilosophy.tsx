@@ -21,8 +21,13 @@ export default function OurPhilosophy() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-8">
-          <span className="text-red-600">&ldquo;How Can I Help You?&rdquo;</span> &mdash; That&apos;s Not a Tagline. That&apos;s How I Operate.
+        <h2 className="font-headline text-3xl font-bold tracking-tight text-white sm:text-4xl mb-8">
+          <span className="text-hcihy-blue">
+            &ldquo;How Can{' '}
+            <span className="lowercase">i</span>{' '}
+            Help You?&rdquo;
+          </span>{' '}
+          &mdash; That&apos;s Not a Tagline. That&apos;s How I Operate.
         </h2>
         <div className="space-y-5 text-lg leading-relaxed text-neutral-300">
           <p>
