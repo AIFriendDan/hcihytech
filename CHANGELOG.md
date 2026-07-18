@@ -24,9 +24,15 @@
 - Refused to run `prisma migrate reset --force` without Dan's explicit consent even after he'd already said "proceed" earlier in the thread — Prisma's own safety gate requires consent captured at the point of the specific dangerous command, not implied from earlier conversation.
 - Slack verification (below) required testing against the live Vercel deployment, not local dev, because Vercel's "Sensitive" env var type is write-only by design (never readable via `vercel env pull`/dashboard, even by the owner) — this is not a bug, it's how Vercel scopes secrets like webhook URLs.
 
+**Slack notification (AIF-5 delivery path):**
+- Found `SLACK_WEBHOOK_URL` set in Vercel Production but with an *empty* value — `lib/slack.ts`'s `if (!webhookUrl) return` silently no-ops on empty string, so no error, no message, nothing in logs.
+- Dan supplied the real webhook URL. Set via `vercel env rm` + `vercel env add` (CLI, not dashboard, after the dashboard edit didn't persist for `DATABASE_URL` earlier in this same session).
+- Vercel marked it **Type: Sensitive** — a write-only env var type, never readable again via `vercel env pull`/dashboard by design (not a bug). Local testing of the Slack path was therefore impossible; verified against the live production deployment instead.
+- Redeployed to Production (`npx vercel --prod`, commit `684b33c`, deployment `dpl_DdivPzVjAkoionShG9jauNNsGwoN`, aliased to `www.hcihytech.com`). POSTed a real test lead to `https://www.hcihytech.com/api/leads` (`source: aif-45-prod-e2e-test`) — `200 {"success":true}`, row confirmed in prod DB, and Dan confirmed the Slack message landed in **#HCiHY Leads** with correct field values and timestamp.
+
 **Follow-ups:**
 - Rename the `fionas_ass` database on hcihytech's Neon project (`late-boat-27209281`) to something brand-correct — cosmetic only, no functional impact, but confusing/risky-looking for the next person who finds it.
-- Slack notification path (AIF-5 requirement) verified separately — see below.
+- Delete the two test lead rows (`source: aif-45-e2e-test` local, `aif-45-prod-e2e-test` production) from the `leads` table if a clean table is wanted before real traffic — left in place since they're harmless and clearly source-tagged.
 
 ## [v1.5.0] — 2026-07-17
 
