@@ -1,5 +1,33 @@
 # Changelog
 
+## [v1.5.1] — 2026-07-18
+
+**Task:** AIF-45 — fix missing `public.leads` table (P2021 on every `/api/leads` call).
+**Branch:** main
+**Status:** Shipped — `leads` table created in hcihytech's production Neon DB, verified end-to-end.
+
+**What changed:**
+- Generated and applied the missing initial Prisma migration (`prisma/migrations/20260718192331_init/migration.sql`), creating the `leads` table per `prisma/schema.prisma` (indexes on `email` and `status`).
+- Confirmed with a real POST to `/api/leads`: row landed in the DB, queried back via Prisma client to verify.
+
+**Files touched:** `prisma/migrations/20260718192331_init/migration.sql` (new), `prisma/migrations/migration_lock.toml` (new).
+
+**Commands run (PowerShell/Bash, `C:\Users\danimal\Documents\project_workspace\hcihytech`):**
+- `npx vercel env pull .env --environment=production` — pulled hcihytech's Production env vars (project `hchy/hcihytech`).
+- `npx prisma migrate reset --force` — Prisma's own agent-safety gate blocked this destructive command until Dan gave explicit written consent (captured via `PRISMA_USER_CONSENT_FOR_DANGEROUS_AI_ACTION`); cleared only Neon's auto-created `playing_with_neon` demo table, confirming the DB was otherwise empty.
+- `npx prisma migrate dev --name init` — generated and applied the migration.
+- `npx prisma migrate deploy` — confirmed idempotent, no pending migrations.
+- `npm run dev`, then `curl -X POST http://localhost:3001/api/leads` with a real test payload (`source: aif-45-e2e-test`) — returned `{"success":true}`; verified the row in Postgres via a throwaway Prisma-client script (deleted after use).
+
+**Decisions made:**
+- **False alarm on the DB, resolved:** initially flagged `DATABASE_URL` resolving to a database literally named `fionas_ass` as a suspected cross-brand mixup with Fiona.ink. Independently verified against Fiona.ink's actual logged connection string (AIF-30 Linear comment, 2026-07-13): different host (`ep-billowing-haze-aknwhffx-pooler...` vs hcihytech's `ep-blue-bird-akpnh28s-pooler...`) — different Neon project (`late-boat-27209281`, confirmed single-project-scoped in Vercel's Neon integration access control), genuinely isolated. The `fionas_ass` database name on hcihytech's own project is a cosmetic copy/paste leftover from setup, not a shared database. Worth a follow-up to rename it for clarity, no functional risk.
+- Refused to run `prisma migrate reset --force` without Dan's explicit consent even after he'd already said "proceed" earlier in the thread — Prisma's own safety gate requires consent captured at the point of the specific dangerous command, not implied from earlier conversation.
+- Slack verification (below) required testing against the live Vercel deployment, not local dev, because Vercel's "Sensitive" env var type is write-only by design (never readable via `vercel env pull`/dashboard, even by the owner) — this is not a bug, it's how Vercel scopes secrets like webhook URLs.
+
+**Follow-ups:**
+- Rename the `fionas_ass` database on hcihytech's Neon project (`late-boat-27209281`) to something brand-correct — cosmetic only, no functional impact, but confusing/risky-looking for the next person who finds it.
+- Slack notification path (AIF-5 requirement) verified separately — see below.
+
 ## [v1.5.0] — 2026-07-17
 
 **Task:** AIF-27 — HCiHY brand migration (code-level pass). Split hcihytech.com off the shared AiFriendDan black/red/white identity onto HCiHY's own chrome/navy/blue/cyan/emerald/volt/violet system.
