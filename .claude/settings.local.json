@@ -6,11 +6,36 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git push *)",
-      "PowerShell($shell = New-Object -ComObject WScript.Shell; $lnk = $shell.CreateShortcut\\(\"C:\\\\Users\\\\danra\\\\AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\Recent\\\\IMG_7611 \\(3\\).jpg.lnk\"\\); $lnk.TargetPath)"
+      "PowerShell($shell = New-Object -ComObject WScript.Shell; $lnk = $shell.CreateShortcut\\(\"C:\\\\Users\\\\danra\\\\AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\Recent\\\\IMG_7611 \\(3\\).jpg.lnk\"\\); $lnk.TargetPath)",
+      "mcp__claude_ai_Notion__notion-fetch",
+      "Bash(npm run *)",
+      "Bash(claude doctor *)",
+      "mcp__claude_ai_Linear__list_projects",
+      "mcp__claude_ai_Linear__list_issues",
+      "mcp__claude_ai_Linear__get_issue",
+      "mcp__claude_ai_Notion__notion-search",
+      "mcp__claude_ai_Notion__notion-update-page",
+      "Bash(npx vercel *)",
+      "Bash(grep -q \"^\\\\.env$\" .gitignore)",
+      "Bash(cd C:\\\\Users\\\\danimal\\\\Documents\\\\project_workspace\\\\hcihytech *)",
+      "mcp__claude_ai_Linear__save_comment",
+      "mcp__claude_ai_Linear__list_comments",
+      "Bash(npx prisma *)",
+      "Bash(PRISMA_USER_CONSENT_FOR_DANGEROUS_AI_ACTION=\"yes\" npx prisma migrate reset --force)",
+      "Bash(node -r dotenv/config \"C:\\\\Users\\\\danimal\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-danimal-Documents-project-workspace-hcihytech\\\\c96c86ea-95ae-4d85-b7bd-f06b0d3960be\\\\scratchpad\\\\verify-lead.mjs\" dotenv_config_path=.env)",
+      "Bash(node --env-file=.env verify-lead.mjs)",
+      "mcp__claude_ai_Slack__slack_search_public",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c ' *)",
+      "Bash(node *)",
+      "Bash(echo -n 'https://hooks.slack.com/services/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')",
+      "Read(//c/Users/danimal/AppData/Local/Temp/claude/C--Users-danimal-Documents-project-workspace-hcihytech/c96c86ea-95ae-4d85-b7bd-f06b0d3960be/scratchpad/**)",
+      "Bash(xxd /c/Users/danimal/AppData/Local/Temp/claude/C--Users-danimal-Documents-project-workspace-hcihytech/c96c86ea-95ae-4d85-b7bd-f06b0d3960be/scratchpad/webhook_val.txt)",
+      "Bash(curl *)"
     ]
   },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "context-mode"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }
