@@ -31,7 +31,8 @@
       "Bash(echo -n 'https://hooks.slack.com/services/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')",
       "Read(//c/Users/danimal/AppData/Local/Temp/claude/C--Users-danimal-Documents-project-workspace-hcihytech/c96c86ea-95ae-4d85-b7bd-f06b0d3960be/scratchpad/**)",
       "Bash(xxd /c/Users/danimal/AppData/Local/Temp/claude/C--Users-danimal-Documents-project-workspace-hcihytech/c96c86ea-95ae-4d85-b7bd-f06b0d3960be/scratchpad/webhook_val.txt)",
-      "Bash(curl *)"
+      "Bash(curl *)",
+      "PowerShell(Get-Command *)"
     ]
   },
   "enableAllProjectMcpServers": true,
