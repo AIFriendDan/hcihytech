@@ -23,26 +23,60 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
+const siteUrl = 'https://hcihytech.com'
+const title = 'HCiHY Tech | IT Services & AI Consulting in Ventura County'
+const description =
+  'IT services, AI consulting, automation, and web solutions for Ventura County businesses. Get expert technology help from HCiHY Tech today.'
+
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'HCiHY Tech',
+  url: siteUrl,
+  areaServed: [
+    'Ventura County',
+    'Ventura',
+    'Oxnard',
+    'Camarillo',
+    'Santa Barbara',
+  ],
+  serviceType: [
+    'IT Support',
+    'Managed IT Services',
+    'AI Consulting',
+    'Automation Consulting',
+    'Web Development',
+  ],
+}
+
 export const metadata: Metadata = {
-  title: 'HCiHY Tech | IT Services & AI Consulting — Ventura County',
-  description:
-    'Local IT services and AI consulting for Ventura County contractors and professionals. 15+ years enterprise experience. Real help from a real neighbor.',
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
-    title: 'HCiHY Tech | IT Services & AI Consulting — Ventura County',
-    description:
-      'Local IT services and AI consulting for Ventura County contractors and professionals. Real help from a real neighbor.',
-    url: 'https://hcihytech.com',
+    title,
+    description,
+    url: siteUrl,
     siteName: 'HCiHY Tech',
     images: [
       {
-        url: 'https://hcihytech.com/og-image.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'HCiHY Tech — IT Services & AI Consulting Ventura County',
+        alt: 'HCiHY Tech IT Services and AI Consulting in Ventura County',
       },
     ],
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: ['/og-image.png'],
   },
 }
 
@@ -57,6 +91,12 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd).replace(/</g, '\\u003c'),
+          }}
+        />
         <HchyHeader />
         {children}
         <HchyFooter />

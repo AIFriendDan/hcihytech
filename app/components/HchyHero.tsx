@@ -96,12 +96,20 @@ export default function HchyHero() {
 
         <ChainBadge />
 
-        <motion.h1
+        <motion.div
           variants={item}
           className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
+          aria-hidden="true"
         >
           <span className="text-hcihy-blue">HC</span>
           <span className="text-hcihy-volt">iHY</span>
+        </motion.div>
+
+        <motion.h1
+          variants={item}
+          className="sr-only"
+        >
+          IT Services &amp; AI Consulting in Ventura County
         </motion.h1>
 
         <motion.div variants={item} className="flex items-center gap-4 text-hcihy-chrome">
