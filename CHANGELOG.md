@@ -1,5 +1,35 @@
 # Changelog
 
+## [v1.6.0] — 2026-07-31
+
+**Task:** Technical SEO optimization per `seofix.md` (Tasks 1–7). No Linear ticket was supplied with the brief — see follow-ups.
+**Branch:** `worktree-seo-optimization`
+**Status:** All 7 tasks complete. `npm run build` passes; every claim below was verified against the emitted build output, not the source.
+
+**Starting state:** commit `58ea04e "IMPLEMENT SEO OPTIMIZATION"` plus uncommitted working-tree changes already covered Tasks 1–6. That work was never committed and never build-verified. This session carried it into an isolated worktree, closed the gaps against the brief, and validated it.
+
+**What changed:**
+- `app/layout.tsx` — title and description set to the exact strings specified in the brief (prior values were paraphrases). Added `Santa Barbara` to `areaServed`. Split the JSON-LD service catalog so all five brief-named services appear as distinct `Service` entries (IT Support, Managed IT Services, AI Consulting, Automation Consulting, Web Development), keeping the existing Social Media Management offer. `metadataBase`, canonical, OpenGraph, Twitter card, and `ProfessionalService` JSON-LD were already present and were left structurally intact.
+- `app/opengraph-image.tsx` — **new.** The prior metadata referenced `/og-image.png`, which does not exist in `public/`; every og:image and twitter:image tag pointed at a 404. Replaced with the App Router `opengraph-image` file convention (`next/og` `ImageResponse`), which generates a real 1200×630 PNG at build time. Uses only canon palette tokens from `globals.css` (navy/blue/volt/chrome) — no new hues, no redesign. The hardcoded `images` arrays were removed from the metadata object so the file convention is the single source.
+- `app/robots.ts`, `app/sitemap.ts`, `app/leads/layout.tsx` — brought under version control unchanged; verified against the Next 16 `MetadataRoute` API in `node_modules/next/dist/docs/`.
+- `app/components/HchyHero.tsx` — semantic H1 is now "IT Services & AI Consulting in Ventura County"; the HCiHY wordmark remains visually intact as an `aria-hidden` div. No styling or animation changes.
+
+**Files touched:** `app/layout.tsx`, `app/opengraph-image.tsx` (new), `app/robots.ts` (new), `app/sitemap.ts` (new), `app/leads/layout.tsx` (new), `app/components/HchyHero.tsx`, `CHANGELOG.md`.
+
+**Commands run (Bash, `C:\Users\danimal\Documents\project_workspace\hcihytech\.claude\worktrees\seo-optimization`):**
+- `npm run build` — compiled successfully, TypeScript clean. Routes emitted: `/`, `/leads`, `/opengraph-image`, `/robots.txt`, `/sitemap.xml`.
+- Verified emitted output directly: `robots.txt` body, `sitemap.xml` body, homepage `<head>` tags, `/leads` `noindex, nofollow, nocache`, and the OG PNG (84KB, valid PNG magic bytes, visually inspected).
+
+**Decisions made:**
+- Followed the brief's literal title/description strings over the existing hand-tuned copy, since the brief specified them explicitly.
+- Chose the `opengraph-image.tsx` file convention over committing a static `og-image.png`, rather than invent new brand art. It is generated from existing tokens and cannot drift out of sync with the site.
+- Left the two `<h1>` tags on `/leads` alone — the brief scoped H1 work to the homepage, and `/leads` is now `noindex`.
+
+**Follow-ups:**
+- No Linear ticket exists for this work; one should be created and linked.
+- `/leads/page.tsx` has two `<h1>` elements. Harmless for SEO now that the page is `noindex`, but it is a real semantic-HTML defect worth a separate cleanup.
+- The homepage H1 renders with framer-motion's `opacity:0` initial state in the static HTML. Text is present in the DOM and Google renders JS, so this is not a blocker — noted only so it is not mistaken for a bug later.
+
 ## [v1.5.6] — 2026-07-30
 
 **Task:** AIF-9 — verify hcihytech leads data, close out (Workload 3 of the 7/24 Dispatch Workload Package). Workload 4 (AIF-46/AIF-54 DB renames) was NOT attempted this session — see below.
