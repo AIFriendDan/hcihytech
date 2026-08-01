@@ -23,26 +23,134 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
+const SITE_URL = 'https://hcihytech.com'
+const LOGO = `${SITE_URL}/hcihy-logo.png`
+const TITLE = 'HCiHY Tech | IT Services & AI Consulting in Ventura County'
+const DESCRIPTION =
+  'IT services, AI consulting, automation, and web solutions for Ventura County businesses. Get expert technology help from HCiHY Tech today.'
+
 export const metadata: Metadata = {
-  title: 'HCiHY Tech | IT Services & AI Consulting — Ventura County',
-  description:
-    'Local IT services and AI consulting for Ventura County contractors and professionals. 15+ years enterprise experience. Real help from a real neighbor.',
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: 'HCiHY Tech | IT Services & AI Consulting — Ventura County',
-    description:
-      'Local IT services and AI consulting for Ventura County contractors and professionals. Real help from a real neighbor.',
-    url: 'https://hcihytech.com',
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
     siteName: 'HCiHY Tech',
-    images: [
-      {
-        url: 'https://hcihytech.com/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'HCiHY Tech — IT Services & AI Consulting Ventura County',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+}
+
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${SITE_URL}/#business`,
+  name: 'HCiHY Tech',
+  alternateName: 'How Can i Help You Tech',
+  description: DESCRIPTION,
+  url: SITE_URL,
+  telephone: '+1-805-616-4676',
+  email: 'dan.garza@aifrienddan.com',
+  image: LOGO,
+  logo: LOGO,
+  priceRange: '$$',
+  founder: {
+    '@type': 'Person',
+    name: 'Dan Garza',
+    jobTitle: 'IT Consultant & AI Solutions Architect',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'CA',
+    addressCountry: 'US',
+  },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Ventura County, CA' },
+    { '@type': 'City', name: 'Ventura' },
+    { '@type': 'City', name: 'Oxnard' },
+    { '@type': 'City', name: 'Camarillo' },
+    { '@type': 'City', name: 'Thousand Oaks' },
+    { '@type': 'City', name: 'Simi Valley' },
+    { '@type': 'City', name: 'Santa Barbara' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'HCiHY Tech Services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'IT Support',
+          description:
+            'Onsite and remote IT support, network setup, and technology troubleshooting.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Managed IT Services',
+          description:
+            'Ongoing managed IT for small businesses — monitoring, maintenance, and vendor management.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'AI Consulting',
+          description:
+            'AI strategy and implementation, including chatbots and AI-powered business tools.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Automation Consulting',
+          description:
+            'Workflow automation that removes repetitive manual work from business operations.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Web Development',
+          description:
+            'Custom websites for small businesses, contractors, and service professionals.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Social Media Management',
+          description: 'Content creation and social media management for local businesses.',
+        },
+      },
+    ],
   },
 }
 
@@ -57,6 +165,10 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
         <HchyHeader />
         {children}
         <HchyFooter />
