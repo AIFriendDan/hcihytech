@@ -21,17 +21,19 @@ const badgeVariants: Variants = {
     scale: 1,
     rotate: 0,
     x: 0,
-    y: [0, -6, 0],
-    transition: {
-      default: { type: 'spring', stiffness: 120, damping: 12, mass: 0.9 },
-      y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.9 },
-    },
+    y: 0,
+    transition: { type: 'spring', stiffness: 120, damping: 12, mass: 0.9 },
   },
 }
 
 function ChainBadge() {
   return (
-    <motion.div className="relative h-[132px] w-[132px]" variants={badgeVariants}>
+    <motion.div
+      className="relative h-[132px] w-[132px]"
+      variants={badgeVariants}
+      animate={{ y: [0, -6, 0] }}
+      transition={{ y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.9 } }}
+    >
       <div
         className="absolute inset-0 rounded-full shadow-[0_0_40px_rgba(5,137,255,0.35)]"
         style={{
@@ -96,14 +98,13 @@ export default function HchyHero() {
 
         <ChainBadge />
 
-        <motion.div
+        <motion.h1
           variants={item}
-          aria-hidden="true"
           className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
         >
           <span className="text-hcihy-blue">HC</span>
           <span className="text-hcihy-volt">iHY</span>
-        </motion.div>
+        </motion.h1>
 
         <motion.div variants={item} className="flex items-center gap-4 text-hcihy-chrome">
           <span className="h-px w-8 bg-hcihy-chrome/40" />
@@ -112,13 +113,6 @@ export default function HchyHero() {
           </span>
           <span className="h-px w-8 bg-hcihy-chrome/40" />
         </motion.div>
-
-        <motion.h1
-          variants={item}
-          className="font-headline text-2xl font-bold tracking-tight text-neutral-200 sm:text-3xl lg:text-4xl"
-        >
-          IT Services &amp; AI Consulting in Ventura County
-        </motion.h1>
 
         <motion.p
           variants={item}
