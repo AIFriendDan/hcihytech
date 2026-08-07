@@ -1,0 +1,74 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGlow" cx="30%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#0a1f44" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="#000000" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="badgeFill" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#10233f"/>
+      <stop offset="70%" stop-color="#060f22"/>
+    </radialGradient>
+    <linearGradient id="ringLin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8ecf2"/>
+      <stop offset="20%" stop-color="#8b93a3"/>
+      <stop offset="45%" stop-color="#f4f6f9"/>
+      <stop offset="65%" stop-color="#6b7280"/>
+      <stop offset="85%" stop-color="#e8ecf2"/>
+      <stop offset="100%" stop-color="#9aa2b2"/>
+    </linearGradient>
+    <linearGradient id="rimGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0589ff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#a8ff00" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#000000"/>
+  <rect width="1200" height="630" fill="url(#bgGlow)"/>
+
+  <!-- faint chrome corner accents -->
+  <line x1="0" y1="0" x2="140" y2="0" stroke="#c0c6d4" stroke-opacity="0.25" stroke-width="2"/>
+  <line x1="0" y1="0" x2="0" y2="140" stroke="#c0c6d4" stroke-opacity="0.25" stroke-width="2"/>
+  <line x1="1200" y1="630" x2="1060" y2="630" stroke="#c0c6d4" stroke-opacity="0.25" stroke-width="2"/>
+  <line x1="1200" y1="630" x2="1200" y2="490" stroke="#c0c6d4" stroke-opacity="0.25" stroke-width="2"/>
+
+  <!-- Chain badge -->
+  <g transform="translate(600,192)">
+    <circle r="96" fill="none" stroke="url(#rimGlow)" stroke-width="14" opacity="0.55"/>
+    <circle r="88" fill="url(#ringLin)"/>
+    <circle r="78" fill="url(#badgeFill)"/>
+    <g transform="rotate(-38)">
+      <rect x="-36" y="-12" width="48" height="24" rx="12" fill="none" stroke="#040a16" stroke-width="13"/>
+      <rect x="-36" y="-12" width="48" height="24" rx="12" fill="none" stroke="#0589ff" stroke-width="9"/>
+    </g>
+    <g transform="rotate(-38) translate(16,12)">
+      <rect x="-36" y="-12" width="48" height="24" rx="12" fill="none" stroke="#040a16" stroke-width="13"/>
+      <rect x="-36" y="-12" width="48" height="24" rx="12" fill="none" stroke="#a8ff00" stroke-width="9"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="600" y="352" text-anchor="middle" font-family="Arial, 'Helvetica Neue', sans-serif" font-weight="800" font-size="92" letter-spacing="-2">
+    <tspan fill="#0589ff">HC</tspan><tspan fill="#a8ff00">iHY</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <g font-family="'Courier New', monospace" font-size="22" letter-spacing="5" font-weight="600">
+    <text x="600" y="400" text-anchor="middle">
+      <tspan fill="#c0c6d4">HOW CAN</tspan><tspan dx="18" fill="#a8ff00">I HELP</tspan><tspan dx="18" fill="#c0c6d4">YOU?</tspan>
+    </text>
+  </g>
+
+  <!-- Subheadline -->
+  <text x="600" y="462" text-anchor="middle" font-family="Arial, 'Helvetica Neue', sans-serif" font-weight="700" font-size="34" fill="#e5e7eb">
+    IT Services &amp; AI Consulting
+  </text>
+  <text x="600" y="500" text-anchor="middle" font-family="Arial, 'Helvetica Neue', sans-serif" font-weight="500" font-size="26" fill="#9aa2b2">
+    Ventura County · Web Design · IT Support
+  </text>
+
+  <!-- bottom domain chip -->
+  <text x="600" y="570" text-anchor="middle" font-family="'Courier New', monospace" font-size="20" letter-spacing="2" fill="#00d4ff">
+    hcihytech.com
+  </text>
+</svg>
