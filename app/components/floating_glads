@@ -1,0 +1,178 @@
+<section class="ai-health-check">
+  <div class="ai-glow"></div>
+
+  <div class="health-card">
+    <div class="badge">
+      ✨ FREE AI BUSINESS HEALTH CHECK
+    </div>
+
+    <h2>
+      Find Your Business's Hidden AI Opportunities
+    </h2>
+
+    <p>
+      Take our free 5-minute AI Health Check and discover where automation
+      can save time, reduce repetitive work, and improve customer response.
+    </p>
+
+    <div class="benefits">
+      <span>⏱ 5 Minutes</span>
+      <span>🤖 No AI Experience Needed</span>
+      <span>💡 Personalized Insights</span>
+    </div>
+
+    <button>
+      🚀 Start My Free AI Health Check
+    </button>
+
+    <small>
+      Free assessment • No obligation • See where AI can help
+    </small>
+  </div>
+</section>
+
+<style>
+.ai-health-check {
+  position: relative;
+  padding: 80px 20px;
+  display:flex;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.ai-glow {
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:
+    radial-gradient(circle,
+    rgba(0,210,255,.35),
+    rgba(80,70,255,.15),
+    transparent 70%);
+  filter:blur(40px);
+  animation:pulse 5s infinite alternate;
+}
+
+.health-card {
+  position:relative;
+  max-width:650px;
+  padding:45px;
+  border-radius:32px;
+
+  background:
+    rgba(255,255,255,.08);
+
+  backdrop-filter:
+    blur(20px);
+
+  border:
+    1px solid rgba(255,255,255,.25);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.35);
+
+  text-align:center;
+
+  animation:
+    float 6s ease-in-out infinite;
+}
+
+.badge {
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:999px;
+
+  background:
+    linear-gradient(90deg,#00d4ff,#7c3aed);
+
+  color:white;
+  font-size:13px;
+  font-weight:700;
+}
+
+.health-card h2 {
+  margin-top:25px;
+  font-size:42px;
+  line-height:1.1;
+  color:white;
+}
+
+.health-card p {
+  margin-top:20px;
+  font-size:18px;
+  color:#d1d5db;
+}
+
+.benefits {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:30px 0;
+}
+
+.benefits span {
+  padding:10px 16px;
+  border-radius:20px;
+  background:rgba(255,255,255,.1);
+  color:white;
+}
+
+.health-card button {
+  width:100%;
+  padding:18px;
+
+  border:none;
+  border-radius:18px;
+
+  background:
+  linear-gradient(90deg,#00d4ff,#2563eb);
+
+  color:white;
+  font-size:18px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  box-shadow:
+  0 15px 35px rgba(0,200,255,.35);
+
+  transition:.3s;
+}
+
+.health-card button:hover {
+  transform:translateY(-4px) scale(1.02);
+}
+
+.health-card small {
+  display:block;
+  margin-top:18px;
+  color:#9ca3af;
+}
+
+
+@keyframes float {
+  50% {
+    transform:translateY(-12px);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform:scale(.9);
+  }
+  to {
+    transform:scale(1.15);
+  }
+}
+
+@media(max-width:700px){
+  .health-card {
+    padding:30px 20px;
+  }
+
+  .health-card h2 {
+    font-size:30px;
+  }
+}
+</style>
