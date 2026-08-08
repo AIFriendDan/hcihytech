@@ -1,5 +1,33 @@
 # Changelog
 
+## [v1.6.0] — 2026-08-07
+
+**Task:** [AIF-87](https://linear.app/aifrienddan-or-hcihy-tech/issue/AIF-87/add-dedicated-service-pages-web-design-ai-consulting-it-services) — add dedicated service pages, clean up staged changes.
+**Branch:** main
+**Status:** Shipped and pushed to main.
+
+**What changed:**
+- Added four new routed service pages: `app/web-design`, `app/ai-consulting`, `app/it-services`, `app/social-media`, built from shared `ServiceHero`, `ServiceFaq`, and `ServiceCrossLinks` components plus new `app/lib/service-pages.ts` / `app/lib/service-schema.ts` libs.
+- Updated `HchyHeader.tsx` nav to route directly to the new pages.
+- Updated `sitemap.ts` to include the new URLs.
+- Replaced `public/og-image.png`.
+- Removed a duplicate `ProfessionalService` JSON-LD block from `app/page.tsx` that conflicted with the canonical one in `app/layout.tsx` (different `areaServed`/`serviceType` data, no shared `@id`) — caught by `/code-review` before commit.
+- Shortened the IT services meta description in `service-pages.ts` to fit SEO length limits (follow-up commit, found as an uncommitted edit mid-push).
+- Deleted a stray `.fuse_hidden0000000500000001` editor-crash artifact under `app/components/` that had been left untracked.
+
+**Files touched:** `app/page.tsx`, `app/sitemap.ts`, `app/components/HchyHeader.tsx`, `public/og-image.png`, `app/components/ServiceCrossLinks.tsx`, `app/components/ServiceFaq.tsx`, `app/components/ServiceHero.tsx`, `app/lib/service-pages.ts`, `app/lib/service-schema.ts`, `app/web-design/page.tsx`, `app/ai-consulting/page.tsx`, `app/it-services/page.tsx`, `app/social-media/page.tsx`.
+
+**Commands run (Bash, `C:\Users\danimal\Documents\project_workspace\hcihytech`):**
+- `git add` / `git commit` / `git push origin main` (two commits: `386d6ce` feature, `eef2a99` meta description fix).
+- `git fetch origin` + `git pull --rebase origin main` — remote had unrelated commits (`Delete floating_glads`, `Add Amplitude analytics helper`) that landed between staging and push; rebased cleanly, no conflicts.
+- `npx tsc --noEmit` — clean before commit.
+
+**Decisions made:**
+- Ran `/code-review` before committing per standing practice; the one confirmed finding (duplicate JSON-LD) was fixed before staging.
+- A second content edit to `service-pages.ts` appeared mid-push (likely an editor autosave) — stashed it during the rebase rather than discarding, then reapplied and committed separately so nothing was lost.
+
+**Follow-ups:** none outstanding.
+
 ## [v1.5.6] — 2026-07-30
 
 **Task:** AIF-9 — verify hcihytech leads data, close out (Workload 3 of the 7/24 Dispatch Workload Package). Workload 4 (AIF-46/AIF-54 DB renames) was NOT attempted this session — see below.
