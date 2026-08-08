@@ -7,12 +7,12 @@ import { motion } from 'framer-motion'
 import { CONTACT } from '../lib/services-data'
 
 const navLinks = [
-  { href: '#web-design', label: 'Web Design' },
-  { href: '#ai-services', label: 'AI Services' },
-  { href: '#social-media', label: 'Social Media' },
-  { href: '#it-services', label: 'IT Services' },
-  { href: '#why-us', label: 'Why Us' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/web-design', label: 'Web Design' },
+  { href: '/ai-consulting', label: 'AI Consulting' },
+  { href: '/social-media', label: 'Social Media' },
+  { href: '/it-services', label: 'IT Services' },
+  { href: '/#why-us', label: 'Why Us' },
+  { href: '/#contact', label: 'Contact' },
 ]
 
 export function HchyHeader() {
@@ -33,13 +33,13 @@ export function HchyHeader() {
 
         <nav className="hidden md:flex gap-6 items-center">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-neutral-400 transition-colors hover:text-hcihy-cyan"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -50,9 +50,9 @@ export function HchyHeader() {
           >
             <Phone size={16} /> {CONTACT.phone}
           </a>
-          <a href="#contact" className="btn-hcihy-primary !px-4 !py-2 text-sm">
+          <Link href="/#contact" className="btn-hcihy-primary !px-4 !py-2 text-sm">
             Get a Quote
-          </a>
+          </Link>
         </div>
 
         <button
@@ -72,14 +72,14 @@ export function HchyHeader() {
         >
           <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-2 text-sm font-medium text-neutral-300 hover:text-white"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-hcihy-chrome/15">
               <a
@@ -88,13 +88,13 @@ export function HchyHeader() {
               >
                 <Phone size={16} /> {CONTACT.phone}
               </a>
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="btn-hcihy-primary w-full text-center text-sm"
               >
                 Get a Quote
-              </a>
+              </Link>
             </div>
           </nav>
         </motion.div>

@@ -1,4 +1,5 @@
 import HchyHero from './components/HchyHero'
+import ServiceCrossLinks from './components/ServiceCrossLinks'
 import HchyAbout from './components/HchyAbout'
 import OurPhilosophy from './components/OurPhilosophy'
 import WebDesignPackages from './components/WebDesignPackages'
@@ -12,6 +13,13 @@ export default function HchyLandingPage() {
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
       <HchyHero />
+      <ServiceCrossLinks
+        heading={
+          <>
+            What we <span className="text-hcihy-volt">do</span>
+          </>
+        }
+      />
       <HchyAbout />
       <OurPhilosophy />
       <WebDesignPackages />
