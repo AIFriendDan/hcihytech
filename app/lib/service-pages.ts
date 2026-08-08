@@ -98,7 +98,7 @@ export const servicePages: ServicePage[] = [
     h1: 'IT Services & Tech Support in Ventura County',
     title: 'IT Services Ventura County | Remote & Onsite Support',
     description:
-      'Reliable IT support for Ventura County homes and businesses. Remote at $85/hr, onsite at $115/hr, or save with monthly packages. 15+ years enterprise experience.',
+      'Reliable IT support for Ventura County homes and businesses. Remote at $85/hr, onsite at $115/hr, or save with a monthly package. 15+ years experience.',
     intro:
       'Fast, reliable tech support for homes and businesses across Ventura County. Backed by 15+ years of enterprise IT experience across Level 1 through Level 3 support, lead, and management roles.',
     serviceType: 'IT support and managed technology services',
